@@ -8,9 +8,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    //frank push
-
-    //cam is pushin p
-
-    // alaric push
 }
