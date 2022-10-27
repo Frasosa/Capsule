@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sosa.final_project.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_wardrobeFragment"
+            app:destination="@id/wardrobeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_outfitFragment"
+            app:destination="@id/outfitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.sosa.final_project.ui.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wardrobeFragment"
+        android:name="com.sosa.final_project.ui.WardrobeFragment"
+        android:label="WardrobeFragment" >
+        <action
+            android:id="@+id/action_wardrobeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/outfitFragment"
+        android:name="com.sosa.final_project.ui.OutfitFragment"
+        android:label="fragment_outfit"
+        tools:layout="@layout/fragment_outfit" >
+        <action
+            android:id="@+id/action_outfitFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
