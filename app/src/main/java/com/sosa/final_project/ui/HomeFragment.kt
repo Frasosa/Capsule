@@ -70,6 +70,14 @@ class HomeFragment : Fragment() {
             goToNextScreen("saturday")
         }
 
+        binding.wardrobe.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_wardrobeFragment)
+        }
+
+        binding.weather.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
+        }
+
         return root
     }
 

@@ -27,6 +27,7 @@
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
         android:textSize="34sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@id/sunday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +37,7 @@
         android:id="@+id/sunday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@id/monday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,10 +104,33 @@
         android:id="@+id/saturday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/wardrobe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/friday_button"
+        android:text="Saturday"
+        />
+
+    <Button
+        android:id="@+id/wardrobe"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/weather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/saturday_button"
+        android:text="wardrobe"
+        />
+
+    <Button
+        android:id="@+id/weather"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/wardrobe"
+        app:layout_constraintTop_toBottomOf="@id/saturday_button"
         android:text="Saturday"
         />
 
