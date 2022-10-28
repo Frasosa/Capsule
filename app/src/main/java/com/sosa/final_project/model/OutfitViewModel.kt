@@ -7,7 +7,7 @@ import com.sosa.final_project.data.DataSource
 
 class OutfitViewModel : ViewModel() {
     //Complete list of outfits for the week
-    private val weeklyOutfits = DataSource.weeklyOutfits
+    val weeklyOutfits = DataSource.weeklyOutfits
 
     //TODO: ADD MUTABLE AND LIVE DATA
 
