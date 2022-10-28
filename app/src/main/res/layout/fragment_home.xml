@@ -6,7 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.sosa.final_project.model.OutfitViewModel" />-->
+
+<!--        &lt;!&ndash; Add the data binding variable for the AccompanimentMenuFragment &ndash;&gt;-->
+<!--        <variable-->
+<!--            name="fragmentHome"-->
+<!--            type="com.sosa.final_project.ui.HomeFragment" />-->
+<!--    </data>-->
+
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"

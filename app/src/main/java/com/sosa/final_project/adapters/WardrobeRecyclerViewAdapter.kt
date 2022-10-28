@@ -1,4 +1,4 @@
-package com.sosa.final_project.ui
+package com.sosa.final_project.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
