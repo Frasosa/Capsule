@@ -55,4 +55,15 @@ object DataSource {
                     R.drawable._002r
                 ),
     )
+
+    val wardrobe = mutableListOf<Int>(
+        R.drawable._002r,
+        R.drawable.fleece,
+        R.drawable.belted_pants,
+        R.drawable.chucks,
+        R.drawable.dunks,
+        R.drawable.hoodie,
+        R.drawable.white_tee,
+        R.drawable.work_pants
+    )
 }

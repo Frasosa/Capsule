@@ -26,6 +26,10 @@ class OutfitViewModel : ViewModel() {
         return outfit.value!!
     }
 
+    fun entireWardrobe () {
+        _outfit.value = DataSource.wardrobe
+    }
+
     //TODO: ADD FUNCTION TO EDIT AN OUTFIT FOR A DAY
 
     //TODO: ADD FUNCTION TO CLEAR AN OUTFIT FOR A DAY

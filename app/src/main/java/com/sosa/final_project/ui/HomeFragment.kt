@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.wardrobe.setOnClickListener{
-
+            sharedViewModel.entireWardrobe()
             findNavController().navigate(R.id.action_homeFragment_to_wardrobeFragment)
         }
 
