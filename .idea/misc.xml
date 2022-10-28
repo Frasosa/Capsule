@@ -3,17 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2265" />
         <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/activity_closet.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/activity_outfit.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/activity_weather.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_outfit.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_outfit_item.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_wardrobe.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_wardrobe_item.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/alari/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_weather.xml" value="0.25" />
       </map>
     </option>
   </component>
