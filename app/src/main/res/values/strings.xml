@@ -4,4 +4,21 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="austin">Austin</string>
+    <string name="_70">70</string>
+    <string name="friday">Friday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="_88">88</string>
+    <string name="_72">72</string>
+    <string name="sunday">Sunday</string>
+    <string name="_75">75</string>
+    <string name="saturday">Saturday</string>
+    <string name="_73">73</string>
+    <string name="monday">Monday</string>
+    <string name="_82">82</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="_65">65</string>
+    <string name="weekly_weather_forecast">Weekly Weather Forecast</string>
+    <string name="_77">77</string>
 </resources>
