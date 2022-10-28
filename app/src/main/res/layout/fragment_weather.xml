@@ -48,30 +48,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
         android:text="Sunday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="326dp" />
+        app:layout_constraintTop_toBottomOf="@+id/todayDegree" />
 
     <TextView
         android:id="@+id/MondayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
         android:text="Monday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="375dp" />
+        app:layout_constraintTop_toBottomOf="@+id/SundayTextView" />
 
     <TextView
         android:id="@+id/TuesdayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
         android:text="Tuesday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="430dp" />
+        app:layout_constraintTop_toBottomOf="@+id/MondayTextView" />
 
 
     <TextView
@@ -79,27 +82,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
         android:text="Wednesday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="479dp" />
+        app:layout_constraintTop_toBottomOf="@+id/TuesdayTextView" />
 
     <TextView
         android:id="@+id/ThursdayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
         android:text="Thursday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="533dp" />
+        app:layout_constraintTop_toBottomOf="@+id/WednesdayTextView" />
 
     <TextView
         android:id="@+id/FridayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="22dp"
         android:text="Friday"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,8 +115,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="22dp"
         android:text="Saturday"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,61 +127,77 @@
         android:id="@+id/sundayDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="80dp"
         android:text="65"
-        tools:layout_editor_absoluteX="323dp"
-        tools:layout_editor_absoluteY="326dp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayDegree" />
 
     <TextView
         android:id="@+id/MondayDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
         android:text="72"
-        tools:layout_editor_absoluteX="319dp"
-        tools:layout_editor_absoluteY="375dp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sundayDegree" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/TuesdayDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
         android:text="75"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="318dp"
-        tools:layout_editor_absoluteY="420dp" />
-
-    <TextView
-        android:id="@+id/SaturdayDegree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="82"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="319dp"
-        tools:layout_editor_absoluteY="658dp" />
-
-    <TextView
-        android:id="@+id/FridayDegree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="75"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="318dp"
-        tools:layout_editor_absoluteY="590dp" />
-
-    <TextView
-        android:id="@+id/ThursdayDegree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="73"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="318dp"
-        tools:layout_editor_absoluteY="533dp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MondayDegree" />
 
     <TextView
         android:id="@+id/WednesdayDegree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
         android:text="88"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="479dp" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TuesdayDegree" />
+
+    <TextView
+        android:id="@+id/ThursdayDegree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
+        android:text="73"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WednesdayDegree" />
+
+    <TextView
+        android:id="@+id/FridayDegree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
+        android:text="75"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ThursdayDegree" />
+
+    <TextView
+        android:id="@+id/SaturdayDegree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="80dp"
+        android:text="82"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FridayDegree" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
