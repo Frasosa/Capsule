@@ -9,11 +9,12 @@ class OutfitViewModel : ViewModel() {
     //Complete list of outfits for the week
     private val weeklyOutfits = DataSource.weeklyOutfits
 
+    //TODO: ADD MUTABLE AND LIVE DATA
+
     //Current outfit for outfit fragment to display
     private val _outfit = MutableLiveData<MutableList<Int>>()
     val outfit: LiveData<MutableList<Int>> = _outfit
 
-    //TODO: ADD MUTABLE AND LIVE DATA
 
     /* function to set the outfit for the outfit fragment depending on the day */
     fun setOutfit (day: String) {
@@ -21,8 +22,8 @@ class OutfitViewModel : ViewModel() {
     }
 
     /* function to set the outfit for the outfit fragment depending on the day */
-    fun getOutfit (): MutableList<Int>? {
-        return outfit.value
+    fun getOutfit (): MutableList<Int> {
+        return outfit.value!!
     }
 
     //TODO: ADD FUNCTION TO EDIT AN OUTFIT FOR A DAY

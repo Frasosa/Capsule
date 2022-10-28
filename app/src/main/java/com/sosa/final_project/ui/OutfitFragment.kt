@@ -39,7 +39,7 @@ class OutfitFragment : Fragment() {
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        //recyclerView.adapter = OutfitAdapter(this, sharedViewModel.getOutfit())
+        recyclerView.adapter = OutfitAdapter(this, sharedViewModel)
 
         return root
     }
