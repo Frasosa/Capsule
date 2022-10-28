@@ -30,7 +30,7 @@ class WardrobeFragment : Fragment() {
 
         //Initialize recyclerview
         val recyclerView = binding.wardrobeRecyclerView
-        recyclerView.adapter = OutfitAdapter(sharedViewModel, true)
+        recyclerView.adapter = OutfitAdapter(sharedViewModel)
 
         // Inflate the layout for this fragment
         return root

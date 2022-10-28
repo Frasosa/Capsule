@@ -9,7 +9,7 @@ import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.ui.OutfitFragment
 
 
-class OutfitAdapter(sharedViewModel: OutfitViewModel, wardrobe: Boolean):
+class OutfitAdapter(sharedViewModel: OutfitViewModel):
     RecyclerView.Adapter<OutfitAdapter.OutfitViewHolder>() {
 
     private var outfit = sharedViewModel.getOutfit()
