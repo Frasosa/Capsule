@@ -39,6 +39,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        activity?.title = "Home"
+
         //set onclick listeners
         binding.sundayButton.setOnClickListener{
             goToNextScreen("sunday")
