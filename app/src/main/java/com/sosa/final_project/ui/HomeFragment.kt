@@ -41,35 +41,39 @@ class HomeFragment : Fragment() {
 
         //set onclick listeners
         binding.sundayButton.setOnClickListener{
-            sharedViewModel.setOutfit("sunday")
-            findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
+            goToNextScreen("sunday")
         }
 
         binding.mondayButton.setOnClickListener{
-
+            goToNextScreen("monday")
         }
 
         binding.tuesdayButton.setOnClickListener{
-
+            goToNextScreen("tuesday")
         }
 
         binding.wednesdayButton.setOnClickListener{
-
+            goToNextScreen("wednesday")
         }
 
         binding.thursdayButton.setOnClickListener{
-
+            goToNextScreen("thursday")
         }
 
         binding.fridayButton.setOnClickListener{
-
+            goToNextScreen("friday")
         }
 
         binding.saturdayButton.setOnClickListener{
-
+            goToNextScreen("saturday")
         }
 
         return root
+    }
+
+    private fun goToNextScreen(day: String) {
+        sharedViewModel.setOutfit(day)
+        findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
     }
 
     /**
