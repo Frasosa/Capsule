@@ -10,15 +10,10 @@ import com.sosa.final_project.adapters.OutfitAdapter
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * A simple [Fragment] subclass.
- * Use the [OutfitFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A reusable fragment
+ * that will shows the items chosen
+ * in a recycler view format.
  */
 class OutfitFragment : Fragment() {
     private var _binding: FragmentOutfitBinding? = null
@@ -33,14 +28,17 @@ class OutfitFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
+
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = OutfitAdapter(this, sharedViewModel)
+        recyclerView.adapter = OutfitAdapter(sharedViewModel)
 
+        // Inflate the layout for this fragment
         return root
     }
 
