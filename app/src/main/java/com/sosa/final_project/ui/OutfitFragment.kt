@@ -36,7 +36,7 @@ class OutfitFragment : Fragment() {
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = OutfitAdapter(sharedViewModel)
+        recyclerView.adapter = OutfitAdapter(sharedViewModel, false)
 
         // Inflate the layout for this fragment
         return root

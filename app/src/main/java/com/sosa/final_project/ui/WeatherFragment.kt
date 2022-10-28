@@ -5,12 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sosa.final_project.databinding.FragmentOutfitBinding
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.sosa.final_project.databinding.FragmentWeatherBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -18,7 +13,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class WeatherFragment : Fragment() {
-    private var _binding: FragmentOutfitBinding? = null
+    private var _binding: FragmentWeatherBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,7 +21,7 @@ class WeatherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //Get binding
-        _binding = FragmentOutfitBinding.inflate(inflater, container, false)
+        _binding = FragmentWeatherBinding.inflate(inflater, container, false)
 
         //Inflate the layout for this fragment
         return binding.root
