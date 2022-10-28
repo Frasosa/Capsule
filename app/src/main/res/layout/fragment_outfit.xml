@@ -14,4 +14,13 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="1"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Add item"
+        android:src="@drawable/ic_baseline_add_24"/>
 </FrameLayout>
