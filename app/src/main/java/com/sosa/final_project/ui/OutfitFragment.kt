@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.sosa.final_project.R
 import com.sosa.final_project.adapters.OutfitAdapter
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
@@ -33,6 +35,10 @@ class OutfitFragment : Fragment() {
         val root = binding.root
 
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
+//        binding.fab.setOnClickListener {
+//            sharedViewModel.entireWardrobe()
+//            findNavController().navigate(R.id.action_outfitFragment_to_wardrobeFragment)
+//        }
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView

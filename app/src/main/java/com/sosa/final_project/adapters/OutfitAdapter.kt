@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.sosa.final_project.databinding.FragmentOutfitItemBinding
+import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.ui.OutfitFragment
 
@@ -17,14 +17,14 @@ class OutfitAdapter(sharedViewModel: OutfitViewModel):
     /**
      * Initialize view elements
      */
-    class OutfitViewHolder(binding: FragmentOutfitItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class OutfitViewHolder(binding: FragmentRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         // Declare and initialize all of the list item UI components
         val image: ImageView = binding.itemImage
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OutfitViewHolder {
         // Inflate list item layout
-        val binding = FragmentOutfitItemBinding
+        val binding = FragmentRecyclerItemBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return OutfitViewHolder(binding)
     }

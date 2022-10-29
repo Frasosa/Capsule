@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sosa.final_project.ui.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_weatherFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/weatherFragment"
         android:name="com.sosa.final_project.ui.WeatherFragment"
-        android:label="fragment_weather"
+        android:label="Weather"
         tools:layout="@layout/fragment_weather" >
         <action
             android:id="@+id/action_weatherFragment_to_homeFragment"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/wardrobeFragment"
         android:name="com.sosa.final_project.ui.WardrobeFragment"
-        android:label="WardrobeFragment" >
+        android:label="Wardrobe" >
         <action
             android:id="@+id/action_wardrobeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -40,10 +40,13 @@
     <fragment
         android:id="@+id/outfitFragment"
         android:name="com.sosa.final_project.ui.OutfitFragment"
-        android:label="fragment_outfit"
+        android:label="Outfit"
         tools:layout="@layout/fragment_outfit" >
         <action
             android:id="@+id/action_outfitFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_outfitFragment_to_wardrobeFragment"
+            app:destination="@id/wardrobeFragment" />
     </fragment>
 </navigation>

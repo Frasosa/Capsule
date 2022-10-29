@@ -21,16 +21,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val sharedViewModel: OutfitViewModel by activityViewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-//        binding.apply {
-//            lifecycleOwner = viewLifecycleOwner
-//            viewModel = sharedViewModel
-//            // initialize the AccompanimentMenuFragment variables
-//            fragmentHome = this@HomeFragment
-//        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,35 +29,33 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        activity?.title = "Home"
-
         //set onclick listeners
         binding.sundayButton.setOnClickListener{
-            goToNextScreen("sunday")
+            goToOutfitOfTheDay("sunday")
         }
 
         binding.mondayButton.setOnClickListener{
-            goToNextScreen("monday")
+            goToOutfitOfTheDay("monday")
         }
 
         binding.tuesdayButton.setOnClickListener{
-            goToNextScreen("tuesday")
+            goToOutfitOfTheDay("tuesday")
         }
 
         binding.wednesdayButton.setOnClickListener{
-            goToNextScreen("wednesday")
+            goToOutfitOfTheDay("wednesday")
         }
 
         binding.thursdayButton.setOnClickListener{
-            goToNextScreen("thursday")
+            goToOutfitOfTheDay("thursday")
         }
 
         binding.fridayButton.setOnClickListener{
-            goToNextScreen("friday")
+            goToOutfitOfTheDay("friday")
         }
 
         binding.saturdayButton.setOnClickListener{
-            goToNextScreen("saturday")
+            goToOutfitOfTheDay("saturday")
         }
 
         binding.wardrobe.setOnClickListener{
@@ -82,7 +70,7 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    private fun goToNextScreen(day: String) {
+    private fun goToOutfitOfTheDay(day: String) {
         sharedViewModel.setOutfit(day)
         findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
     }
