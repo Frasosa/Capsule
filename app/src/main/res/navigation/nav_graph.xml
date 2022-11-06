@@ -11,32 +11,22 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_wardrobeFragment"
-            app:destination="@id/wardrobeFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_outfitFragment"
             app:destination="@id/outfitFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/weatherFragment"
         android:name="com.sosa.final_project.ui.WeatherFragment"
         android:label="Weather"
-        tools:layout="@layout/fragment_weather" >
-        <action
-            android:id="@+id/action_weatherFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_weather" />
+
     <fragment
         android:id="@+id/wardrobeFragment"
         android:name="com.sosa.final_project.ui.WardrobeFragment"
-        android:label="Wardrobe" >
-        <action
-            android:id="@+id/action_wardrobeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:label="Wardrobe"
+        tools:layout="@layout/fragment_wardrobe"/>
+
     <fragment
         android:id="@+id/outfitFragment"
         android:name="com.sosa.final_project.ui.OutfitFragment"
@@ -45,8 +35,6 @@
         <action
             android:id="@+id/action_outfitFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_outfitFragment_to_wardrobeFragment"
-            app:destination="@id/wardrobeFragment" />
     </fragment>
+
 </navigation>

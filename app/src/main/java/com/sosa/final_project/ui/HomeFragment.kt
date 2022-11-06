@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.sosa.final_project.R
 import com.sosa.final_project.databinding.FragmentHomeBinding
 import com.sosa.final_project.model.OutfitViewModel
-
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
@@ -56,15 +58,6 @@ class HomeFragment : Fragment() {
 
         binding.saturdayButton.setOnClickListener{
             goToOutfitOfTheDay("saturday")
-        }
-
-        binding.wardrobe.setOnClickListener{
-            sharedViewModel.entireWardrobe()
-            findNavController().navigate(R.id.action_homeFragment_to_wardrobeFragment)
-        }
-
-        binding.weather.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_weatherFragment)
         }
 
         return root

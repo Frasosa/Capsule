@@ -34,6 +34,7 @@ class OutfitFragment : Fragment() {
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
         val root = binding.root
 
+
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
 //        binding.fab.setOnClickListener {
 //            sharedViewModel.entireWardrobe()
@@ -47,6 +48,5 @@ class OutfitFragment : Fragment() {
         // Inflate the layout for this fragment
         return root
     }
-
 
 }
