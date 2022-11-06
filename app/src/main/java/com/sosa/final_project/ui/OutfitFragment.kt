@@ -35,6 +35,7 @@ class OutfitFragment : Fragment() {
         val root = binding.root
 
 
+
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
 //        binding.fab.setOnClickListener {
 //            sharedViewModel.entireWardrobe()

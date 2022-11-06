@@ -27,8 +27,8 @@ class OutfitViewModel : ViewModel() {
         return outfit.value!!
     }
 
-    fun entireWardrobe () {
-        _outfit.value = DataSource.wardrobe
+    fun entireWardrobe (): MutableList<Int> {
+        return DataSource.wardrobe
     }
 
     //TODO: ADD FUNCTION TO EDIT AN OUTFIT FOR A DAY

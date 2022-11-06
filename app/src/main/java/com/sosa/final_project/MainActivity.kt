@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    @OptIn(NavigationUiSaveStateControl::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,7 +28,14 @@ class MainActivity : AppCompatActivity() {
         // Set up bottom navigation
         setupActionBarWithNavController(navController,
             AppBarConfiguration(setOf(R.id.wardrobeFragment, R.id.homeFragment, R.id.weatherFragment)))
-        NavigationUI.setupWithNavController(binding.bottomNavigationMenu, navController,false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        binding.bottomNavigationMenu.setupWithNavController(navController)
+    }
+
+    // Override back button functionality for action bar
+    override fun onSupportNavigateUp(): Boolean {
+        if (!(navController.navigateUp() || super.onSupportNavigateUp())) {
+            onBackPressed()
+        }
+        return true
     }
 }
