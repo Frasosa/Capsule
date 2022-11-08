@@ -5,6 +5,10 @@ buildscript {
         lifecycle_version = '2.3.1'
         room_version = '2.3.0'
     }
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
 plugins {
