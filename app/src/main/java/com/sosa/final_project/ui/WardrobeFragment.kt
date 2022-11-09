@@ -12,8 +12,6 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.snapshots.SnapshotApplyResult
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -33,15 +31,18 @@ import kotlinx.coroutines.launch
  * A fragment representing a list of Items.
  */
 class WardrobeFragment : Fragment() {
+    // get binding
     private var _binding: FragmentWardrobeBinding? = null
     private val binding get() = _binding!!
 
     private val sharedViewModel: OutfitViewModel by activityViewModels()
 
+    // get view model
     private val wardrobeViewModel: WardrobeViewModel by activityViewModels{
         WardrobeViewModelFactory((activity?.application as BaseApplication).database.itemDao())
     }
 
+    // initialize recycler adapter
     private val adapter by lazy { WardrobeAdapter()}
 
     // initialize animations
@@ -57,32 +58,6 @@ class WardrobeFragment : Fragment() {
     // keeps track of the state that the add button is in
     // initialized to false which means only the add button is viewable
     private var clicked = false
-
-    //IMPLICIT ACTIVITIES
-    private val tmpUri: Uri = Uri.EMPTY
-    private val cameraImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            lifecycleScope.launch {
-                val item = Item(0, it?.data?.extras?.get("data") as Bitmap)
-                wardrobeViewModel.addItem(item)
-            }
-            wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
-                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
-            }
-    }
-
-    private val galleryImage = registerForActivityResult(ActivityResultContracts.GetContent())
-    { uri: Uri? ->
-        uri?.let {
-            //do something with uri
-            lifecycleScope.launch {
-                val item = Item(0, getBitmap(uri))
-                wardrobeViewModel.addItem(item)
-            }
-            wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
-                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,16 +76,18 @@ class WardrobeFragment : Fragment() {
             clicked = !clicked
         }
 
-        // TODO: GET DATA FROM THESE IMPLICIT INTENTS TO STORE
+        // on click for camera intent
         binding.cameraFab.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             cameraImage.launch(intent)
         }
 
+        // on click for gallery intent
         binding.galleryFab.setOnClickListener {
             galleryImage.launch("image/*")
         }
 
+        // observe the current list of items in the wardrobe
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
             wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
         }
@@ -121,6 +98,44 @@ class WardrobeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return root
+    }
+
+    // inserts bitmap retrieved from camera into the database and tells adapter to show it
+    private val cameraImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        lifecycleScope.launch {
+            val item = Item(0, it?.data?.extras?.get("data") as Bitmap)
+            wardrobeViewModel.addItem(item)
+        }
+        wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
+            wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+        }
+    }
+
+    // inserts uri retrieved from gallery into the database and tells adapter to show it
+    private val galleryImage = registerForActivityResult(ActivityResultContracts.GetContent())
+    { uri: Uri? ->
+        uri?.let {
+            //do something with uri
+            lifecycleScope.launch {
+                val item = Item(0, getBitmap(uri))
+                wardrobeViewModel.addItem(item)
+            }
+            wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
+                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+            }
+        }
+    }
+
+    // gets a bitmap from an uri using coil
+    private suspend fun getBitmap(uri: Uri): Bitmap {
+        val loading = ImageLoader(requireContext())
+        val request = ImageRequest.Builder(requireContext())
+            .data(uri)
+            .allowHardware(false)
+            .build()
+
+        val result = (loading.execute(request) as SuccessResult).drawable
+        return (result as BitmapDrawable).bitmap
     }
 
     // helper function to animate expandable buttons
@@ -156,18 +171,6 @@ class WardrobeFragment : Fragment() {
             binding.cameraFab.isClickable = false
             binding.galleryFab.isClickable = false
         }
-    }
-
-    // gets a bitmap from an uri using coil
-    private suspend fun getBitmap(uri: Uri): Bitmap {
-        val loading = ImageLoader(requireContext())
-        val request = ImageRequest.Builder(requireContext())
-            .data(uri)
-            .allowHardware(false)
-            .build()
-
-        val result = (loading.execute(request) as SuccessResult).drawable
-        return (result as BitmapDrawable).bitmap
     }
 
 }

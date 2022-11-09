@@ -13,24 +13,27 @@ class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
     val wardrobe: LiveData<List<Item>> = itemDao.getAllItems().asLiveData()
 
 
+    //inserts an item into the database
     fun addItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
         itemDao.insertItem(item)
     }
 
+    //deletes an item from the database
     fun deleteItem(item: Item) {
         viewModelScope.launch(Dispatchers.IO) {
             itemDao.deleteItem(item)
         }
     }
 
+    //gets an item given an id from the database
     fun getItem (id : Int) : LiveData<Item> {
         return itemDao.getItem(id).asLiveData()
     }
 
 }
 
-// view model factory that takes a ForageableDao as a property and
-// creates a ForageableViewModel
+// view model factory that takes a itemDao as a property and
+// creates a WardrobeViewModel
 class WardrobeViewModelFactory(private val itemDao: ItemDao)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

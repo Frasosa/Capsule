@@ -11,7 +11,5 @@ data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val image: Bitmap
-){
-
-}
+)
 

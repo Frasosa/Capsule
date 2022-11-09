@@ -40,8 +40,10 @@ class WardrobeAdapter (): RecyclerView.Adapter<WardrobeAdapter.ItemViewHolder>()
         holder.image.load(item.image)
     }
 
+
     fun setData(wardrobe: List<Item>) {
         this.wardrobe = wardrobe
+        //notifyItemInserted(wardrobe.lastIndex)
         notifyDataSetChanged()
     }
 }
