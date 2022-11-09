@@ -1,31 +1,43 @@
 package com.sosa.final_project.model
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import android.widget.Toast
+import androidx.lifecycle.*
 import com.sosa.final_project.data.Item
-import com.sosa.final_project.data.ItemDatabase
-import com.sosa.final_project.data.ItemRepository
+import com.sosa.final_project.data.ItemDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WardrobeViewModel(application: Application) : AndroidViewModel(application) {
+class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
 
-    private val readAllData: LiveData<List<Item>>
-    private val repository: ItemRepository
+    //list of all item in the wardrobe
+    val wardrobe: LiveData<List<Item>> = itemDao.getAllItems().asLiveData()
 
-    init {
-        val itemDao = ItemDatabase.getDatabase(application).itemDao()
-        repository = ItemRepository(itemDao)
-        readAllData = repository.readAllData
+
+    fun addItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {
+        itemDao.insertItem(item)
     }
 
-    //
-    fun addItem(item: Item) {
+    fun deleteItem(item: Item) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addItem(item)
+            itemDao.deleteItem(item)
         }
     }
 
+    fun getItem (id : Int) : LiveData<Item> {
+        return itemDao.getItem(id).asLiveData()
+    }
+
+}
+
+// view model factory that takes a ForageableDao as a property and
+// creates a ForageableViewModel
+class WardrobeViewModelFactory(private val itemDao: ItemDao)
+    : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(WardrobeViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return WardrobeViewModel(itemDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

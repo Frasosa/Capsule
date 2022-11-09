@@ -1,37 +1,29 @@
 package com.sosa.final_project.ui
 
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.media.Image
-import android.media.MediaMetadataRetriever.BitmapParams
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.provider.MediaStore.Images.Media.getBitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
-import com.sosa.final_project.R
+import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
 import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.model.WardrobeViewModel
+import com.sosa.final_project.model.WardrobeViewModelFactory
 import kotlinx.coroutines.launch
-import java.io.File
 
 /**
  * A fragment representing a list of Items.
@@ -39,8 +31,14 @@ import java.io.File
 class WardrobeFragment : Fragment() {
     private var _binding: FragmentWardrobeBinding? = null
     private val binding get() = _binding!!
+
     private val sharedViewModel: OutfitViewModel by activityViewModels()
-    private val wardrobeViewModel: WardrobeViewModel by activityViewModels()
+
+    private val wardrobeViewModel: WardrobeViewModel by activityViewModels{
+        WardrobeViewModelFactory((activity?.application as BaseApplication).database.itemDao())
+    }
+
+    private val adapter by lazy { WardrobeAdapter()}
 
     // initialize animations
     private val rotateOpen: Animation by lazy {AnimationUtils.loadAnimation(
@@ -57,26 +55,34 @@ class WardrobeFragment : Fragment() {
     private var clicked = false
 
     //IMPLICIT ACTIVITIES
-//    private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-//        if (isSuccess) {
-//            latestTmpUri?.let { uri ->
-//                //do something with uri
-//                previewImage.setImageURI(uri)
-//            }
-//        }
-//    }
-
-    private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent())
-    { uri: Uri? ->
-        uri?.let {
+    private val tmpUri: Uri = Uri.EMPTY
+    private val cameraImage = registerForActivityResult(ActivityResultContracts.TakePicture())
+    { Success ->
+        if (Success) {
             //do something with uri
             lifecycleScope.launch {
-                wardrobeViewModel.addItem(Item(id, getBitmap(uri)))
+                val item = Item(0, getBitmap(tmpUri))
+                wardrobeViewModel.addItem(item)
+            }
+            wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
+                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
             }
         }
     }
 
-
+    private val galleryImage = registerForActivityResult(ActivityResultContracts.GetContent())
+    { uri: Uri? ->
+        uri?.let {
+            //do something with uri
+            lifecycleScope.launch {
+                val item = Item(0, getBitmap(uri))
+                wardrobeViewModel.addItem(item)
+            }
+            wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
+                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,22 +103,20 @@ class WardrobeFragment : Fragment() {
 
         // TODO: GET DATA FROM THESE IMPLICIT INTENTS TO STORE
         binding.cameraFab.setOnClickListener {
-//            lifecycleScope.launchWhenStarted {
-//                getTmpFileUri().let { uri ->
-//                    latestTmpUri = uri
-//                    takeImageResult.launch(uri)
-//                }
-//            }
+            cameraImage.launch(tmpUri)
         }
 
         binding.galleryFab.setOnClickListener {
-            selectImageFromGalleryResult.launch("image/*")
+            galleryImage.launch("image/*")
         }
 
+        wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
+            wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+        }
 
         // Initialize recyclerview
         val recyclerView = binding.wardrobeRecyclerView
-        recyclerView.adapter = WardrobeAdapter(sharedViewModel)
+        recyclerView.adapter = adapter
 
         // Inflate the layout for this fragment
         return root
@@ -153,24 +157,16 @@ class WardrobeFragment : Fragment() {
         }
     }
 
+    // gets a bitmap from an uri using coil
     private suspend fun getBitmap(uri: Uri): Bitmap {
-        val loading: ImageLoader? = this.context?.let { ImageLoader(it) }
-        val request: ImageRequest? = this.context?.let {
-            ImageRequest.Builder(it)
-                .data(uri)
-                .build()
-        }
+        val loading = ImageLoader(requireContext())
+        val request = ImageRequest.Builder(requireContext())
+            .data(uri)
+            .allowHardware(false)
+            .build()
 
-        val result: Drawable = (request?.let { loading?.execute(it) } as SuccessResult).drawable
+        val result = (loading.execute(request) as SuccessResult).drawable
         return (result as BitmapDrawable).bitmap
     }
-//    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-//            val imageUri = data.data
-//            imageView.setImageURI(imageUri)
-//        }
-//    }
-
 
 }

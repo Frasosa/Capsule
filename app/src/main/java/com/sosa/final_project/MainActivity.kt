@@ -33,9 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     // Override back button functionality for action bar
     override fun onSupportNavigateUp(): Boolean {
-        if (!(navController.navigateUp() || super.onSupportNavigateUp())) {
-            onBackPressed()
-        }
-        return true
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

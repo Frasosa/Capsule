@@ -10,6 +10,8 @@ import androidx.room.PrimaryKey
 data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val image: Bitmap,
-    //val category: Category
-)
+    val image: Bitmap
+){
+
+}
+

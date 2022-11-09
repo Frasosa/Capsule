@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
     // method to retrieve all items from the database
     @Query("SELECT * from item_database")
-    fun getAllItems(): LiveData<List<Item>>
+    fun getAllItems(): Flow<List<Item>>
 
     // method to retrieve a item from the database by id
     @Query("SELECT * from item_database WHERE id = :id")
-    fun getItem(id: Int): LiveData<Item>
+    fun getItem(id: Int): Flow<Item>
 
     // method to insert a item into the database
     @Insert(onConflict = OnConflictStrategy.IGNORE)
