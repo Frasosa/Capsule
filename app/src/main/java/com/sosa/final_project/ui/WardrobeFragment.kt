@@ -1,15 +1,19 @@
 package com.sosa.final_project.ui
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.snapshots.SnapshotApplyResult
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -56,18 +60,14 @@ class WardrobeFragment : Fragment() {
 
     //IMPLICIT ACTIVITIES
     private val tmpUri: Uri = Uri.EMPTY
-    private val cameraImage = registerForActivityResult(ActivityResultContracts.TakePicture())
-    { Success ->
-        if (Success) {
-            //do something with uri
+    private val cameraImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             lifecycleScope.launch {
-                val item = Item(0, getBitmap(tmpUri))
+                val item = Item(0, it?.data?.extras?.get("data") as Bitmap)
                 wardrobeViewModel.addItem(item)
             }
             wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
                 wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
             }
-        }
     }
 
     private val galleryImage = registerForActivityResult(ActivityResultContracts.GetContent())
@@ -103,7 +103,8 @@ class WardrobeFragment : Fragment() {
 
         // TODO: GET DATA FROM THESE IMPLICIT INTENTS TO STORE
         binding.cameraFab.setOnClickListener {
-            cameraImage.launch(tmpUri)
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            cameraImage.launch(intent)
         }
 
         binding.galleryFab.setOnClickListener {
