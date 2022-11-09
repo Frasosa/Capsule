@@ -1,19 +1,37 @@
 package com.sosa.final_project.ui
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.media.Image
+import android.media.MediaMetadataRetriever.BitmapParams
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media.getBitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import coil.ImageLoader
+import coil.request.ImageRequest
+import coil.request.SuccessResult
+import com.sosa.final_project.R
 import com.sosa.final_project.adapters.WardrobeAdapter
+import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
 import com.sosa.final_project.model.OutfitViewModel
-
+import com.sosa.final_project.model.WardrobeViewModel
+import kotlinx.coroutines.launch
+import java.io.File
 
 /**
  * A fragment representing a list of Items.
@@ -22,6 +40,7 @@ class WardrobeFragment : Fragment() {
     private var _binding: FragmentWardrobeBinding? = null
     private val binding get() = _binding!!
     private val sharedViewModel: OutfitViewModel by activityViewModels()
+    private val wardrobeViewModel: WardrobeViewModel by activityViewModels()
 
     // initialize animations
     private val rotateOpen: Animation by lazy {AnimationUtils.loadAnimation(
@@ -36,6 +55,28 @@ class WardrobeFragment : Fragment() {
     // keeps track of the state that the add button is in
     // initialized to false which means only the add button is viewable
     private var clicked = false
+
+    //IMPLICIT ACTIVITIES
+//    private val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+//        if (isSuccess) {
+//            latestTmpUri?.let { uri ->
+//                //do something with uri
+//                previewImage.setImageURI(uri)
+//            }
+//        }
+//    }
+
+    private val selectImageFromGalleryResult = registerForActivityResult(ActivityResultContracts.GetContent())
+    { uri: Uri? ->
+        uri?.let {
+            //do something with uri
+            lifecycleScope.launch {
+                wardrobeViewModel.addItem(Item(id, getBitmap(uri)))
+            }
+        }
+    }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,13 +97,16 @@ class WardrobeFragment : Fragment() {
 
         // TODO: GET DATA FROM THESE IMPLICIT INTENTS TO STORE
         binding.cameraFab.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivity(intent)
+//            lifecycleScope.launchWhenStarted {
+//                getTmpFileUri().let { uri ->
+//                    latestTmpUri = uri
+//                    takeImageResult.launch(uri)
+//                }
+//            }
         }
 
         binding.galleryFab.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivity(intent)
+            selectImageFromGalleryResult.launch("image/*")
         }
 
 
@@ -109,6 +153,17 @@ class WardrobeFragment : Fragment() {
         }
     }
 
+    private suspend fun getBitmap(uri: Uri): Bitmap {
+        val loading: ImageLoader? = this.context?.let { ImageLoader(it) }
+        val request: ImageRequest? = this.context?.let {
+            ImageRequest.Builder(it)
+                .data(uri)
+                .build()
+        }
+
+        val result: Drawable = (request?.let { loading?.execute(it) } as SuccessResult).drawable
+        return (result as BitmapDrawable).bitmap
+    }
 //    protected fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 //        super.onActivityResult(requestCode, resultCode, data)
 //        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
@@ -116,4 +171,6 @@ class WardrobeFragment : Fragment() {
 //            imageView.setImageURI(imageUri)
 //        }
 //    }
+
+
 }

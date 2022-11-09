@@ -8,6 +8,7 @@ import androidx.room.*
  * This database stores a [Item] entity
  */
 @Database(entities = [Item::class], version = 1, exportSchema = false)
+@TypeConverters(Converter::class)
 abstract class ItemDatabase : RoomDatabase() {
     abstract fun itemDao() : ItemDao
 
@@ -16,14 +17,18 @@ abstract class ItemDatabase : RoomDatabase() {
         private var INSTANCE: ItemDatabase? = null
 
         fun getDatabase(context: Context): ItemDatabase {
-            return INSTANCE ?: synchronized(this) {
+            val tempInstance = INSTANCE
+            //If one exists already we can just return it
+            if (tempInstance != null)
+                return tempInstance
+
+            //Otherwise we make one and return it with synchronization
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ItemDatabase::class.java,
                     "item_database"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                ).build()
                 INSTANCE = instance
                 return instance
             }
