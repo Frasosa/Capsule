@@ -22,7 +22,6 @@ import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
-import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.model.WardrobeViewModel
 import com.sosa.final_project.model.WardrobeViewModelFactory
 import kotlinx.coroutines.launch
@@ -34,8 +33,6 @@ class WardrobeFragment : Fragment() {
     // get binding
     private var _binding: FragmentWardrobeBinding? = null
     private val binding get() = _binding!!
-
-    private val sharedViewModel: OutfitViewModel by activityViewModels()
 
     // get view model
     private val wardrobeViewModel: WardrobeViewModel by activityViewModels{
@@ -66,7 +63,6 @@ class WardrobeFragment : Fragment() {
         // get binding
         _binding = FragmentWardrobeBinding.inflate(inflater, container, false)
         val root = binding.root
-        sharedViewModel.entireWardrobe()
 
         // Functionality for expandable buttons
         binding.addFab.setOnClickListener {
