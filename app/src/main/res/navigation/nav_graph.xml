@@ -29,7 +29,11 @@
         android:id="@+id/wardrobeFragment"
         android:name="com.sosa.final_project.ui.WardrobeFragment"
         android:label="Wardrobe"
-        tools:layout="@layout/fragment_wardrobe"/>
+        tools:layout="@layout/fragment_wardrobe">
+        <action
+            android:id="@+id/action_wardrobeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/outfitFragment"

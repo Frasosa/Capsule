@@ -15,10 +15,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.sosa.final_project.BaseApplication
+import com.sosa.final_project.R
 import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
@@ -40,7 +42,11 @@ class WardrobeFragment : Fragment() {
     }
 
     // initialize recycler adapter
-    private val adapter by lazy { WardrobeAdapter()}
+    private val adapter by lazy { WardrobeAdapter { item ->
+            findNavController().navigate(R.id.action_wardrobeFragment_to_homeFragment)
+            wardrobeViewModel.deleteItem(item)
+        }
+    }
 
     // initialize animations
     private val rotateOpen: Animation by lazy {AnimationUtils.loadAnimation(

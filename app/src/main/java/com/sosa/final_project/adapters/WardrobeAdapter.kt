@@ -3,14 +3,34 @@ package com.sosa.final_project.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ListView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 
-class WardrobeAdapter (): RecyclerView.Adapter<WardrobeAdapter.ItemViewHolder>() {
+
+class WardrobeAdapter (private val clickListener: (Item) -> Unit):
+    ListAdapter<Item, WardrobeAdapter.ItemViewHolder>(DiffCallback) {
 
     private var wardrobe = emptyList<Item>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+
+    companion object DiffCallback: DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     /**
      * Initialize view elements
@@ -34,10 +54,13 @@ class WardrobeAdapter (): RecyclerView.Adapter<WardrobeAdapter.ItemViewHolder>()
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         // Get current item
-        //val resources = context.resources
         val item = wardrobe[position]
         // Update the three text views and the image view for the current card
         holder.image.load(item.image)
+        holder.itemView.setOnLongClickListener{
+            clickListener(item)
+            true
+        }
     }
 
 

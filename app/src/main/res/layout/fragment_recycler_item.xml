@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:foreground="?android:attr/selectableItemBackground"
     app:strokeColor="@color/black"
     app:strokeWidth="3dp"
     app:cardCornerRadius="4dp"
@@ -27,5 +28,12 @@
             android:contentDescription="" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/selected_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_700"
+        android:visibility="invisible" />
 
 </com.google.android.material.card.MaterialCardView>
