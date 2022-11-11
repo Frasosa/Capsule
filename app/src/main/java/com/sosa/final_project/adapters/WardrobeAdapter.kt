@@ -1,6 +1,5 @@
 package com.sosa.final_project.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -17,10 +16,10 @@ class WardrobeAdapter (private val clickListener: (Item) -> Unit):
 
 
     private var wardrobe = emptyList<Item>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+//        set(value) {
+//            field = value
+//            //notifyDataSetChanged()
+//        }
 
 
     companion object DiffCallback: DiffUtil.ItemCallback<Item>() {
@@ -60,6 +59,7 @@ class WardrobeAdapter (private val clickListener: (Item) -> Unit):
         holder.image.load(item.image)
         holder.itemView.setOnLongClickListener{
             clickListener(item)
+            notifyItemRemoved(position)
             //holder.itemView.setBackgroundColor(Color.RED)
             true
         }
@@ -68,5 +68,6 @@ class WardrobeAdapter (private val clickListener: (Item) -> Unit):
 
     fun setData(wardrobe: List<Item>) {
         this.wardrobe = wardrobe
+        notifyDataSetChanged()
     }
 }

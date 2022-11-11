@@ -15,12 +15,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.sosa.final_project.BaseApplication
-import com.sosa.final_project.R
 import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
