@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.adapters.OutfitAdapter
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
+import com.sosa.final_project.model.OutfitViewModelFactory
+import com.sosa.final_project.model.OutfitViewModelWIP
 
 /**
  * A reusable fragment
@@ -20,8 +23,9 @@ import com.sosa.final_project.model.OutfitViewModel
 class OutfitFragment : Fragment() {
     private var _binding: FragmentOutfitBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: OutfitViewModel by activityViewModels()
-
+    private val outfitViewModel: OutfitViewModelWIP by activityViewModels{
+        OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -43,7 +47,7 @@ class OutfitFragment : Fragment() {
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = OutfitAdapter(sharedViewModel)
+        recyclerView.adapter = outfitViewModel.currentDay.value?.let { OutfitAdapter(it) }
 
         // Inflate the layout for this fragment
         return root
