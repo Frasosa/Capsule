@@ -11,7 +11,7 @@ interface OutfitDao {
 
     // method to insert a outfit into the database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOutfit(outfit: Outfit)
+    fun insertOutfit(outfit: Outfit)
 
     // method to update a outfit that is already in the database
     @Update

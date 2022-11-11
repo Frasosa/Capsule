@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
 
-    val monday: LiveData<Outfit> = outfitDao.getOutfit("monday").asLiveData()
+    var monday: Outfit = Outfit("monday", mutableListOf())
     val tuesday: LiveData<Outfit> = outfitDao.getOutfit("tuesday").asLiveData()
     val wednesday: LiveData<Outfit> = outfitDao.getOutfit("wednesday").asLiveData()
     val thursday: LiveData<Outfit> = outfitDao.getOutfit("thursday").asLiveData()
@@ -18,7 +18,7 @@ class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
     val saturday: LiveData<Outfit> = outfitDao.getOutfit("saturday").asLiveData()
     val sunday: LiveData<Outfit> = outfitDao.getOutfit("sunday").asLiveData()
 
-    var currentDay: LiveData<Outfit> = monday
+    var currentDay: Outfit = monday
 
 
     //inserts an item into the database
@@ -34,17 +34,16 @@ class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
     }
 
     //gets an item given an id from the database
-    fun updateOutfit(outfit: Outfit) {
+    fun updateOutfit(outfit: Outfit, item: Item) {
+        monday.items.add(item)
         viewModelScope.launch(Dispatchers.IO) {
-            outfitDao.updateOutfit(outfit)
+            monday.let { outfitDao.insertOutfit(it) }
         }
     }
 
     fun setOutfit(day: String) {
         if (day == "monday")
             currentDay = monday
-        else if (day == "tuesday")
-                currentDay = tuesday
     }
 
 }

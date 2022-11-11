@@ -42,12 +42,12 @@ class OutfitFragment : Fragment() {
 
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
         binding.fab.setOnClickListener {
-            //findNavController().navigate(R.id.action_outfitFragment_to_wardrobeFragment)
+            findNavController().navigate(R.id.action_outfitFragment_to_pickerFragment)
         }
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = outfitViewModel.currentDay.value?.let { OutfitAdapter(it) }
+        recyclerView.adapter = OutfitAdapter(outfitViewModel.currentDay)
 
         // Inflate the layout for this fragment
         return root

@@ -2,6 +2,11 @@ package com.sosa.final_project.data
 
 import android.content.Context
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.concurrent.Executors
+
 
 /**
  * Room database to persist data for the Capsule app.
@@ -23,16 +28,29 @@ abstract class ItemDatabase : RoomDatabase() {
             if (tempInstance != null)
                 return tempInstance
 
+            var rdc: Callback = object : Callback() {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    getDatabase(context).outfitDao().insertOutfit(Outfit("monday",
+                        listOf<Item>() as MutableList<Item>
+                    ))
+                }
+            }
+
             //Otherwise we make one and return it with synchronization
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ItemDatabase::class.java,
                     "database"
-                ).build()
+                )
+                    .addCallback(rdc)
+                    .build()
+
                 INSTANCE = instance
                 return instance
             }
         }
     }
+
+
 }
