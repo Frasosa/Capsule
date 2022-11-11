@@ -1,6 +1,5 @@
 package com.sosa.final_project.model
 
-import android.widget.Toast
 import androidx.lifecycle.*
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.ItemDao

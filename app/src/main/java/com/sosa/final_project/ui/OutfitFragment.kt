@@ -37,10 +37,9 @@ class OutfitFragment : Fragment() {
 
 
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
-//        binding.fab.setOnClickListener {
-//            sharedViewModel.entireWardrobe()
-//            findNavController().navigate(R.id.action_outfitFragment_to_wardrobeFragment)
-//        }
+        binding.fab.setOnClickListener {
+            //findNavController().navigate(R.id.action_outfitFragment_to_wardrobeFragment)
+        }
 
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView

@@ -7,10 +7,11 @@ import androidx.room.*
  * Room database to persist data for the Capsule app.
  * This database stores a [Item] entity
  */
-@Database(entities = [Item::class], version = 1, exportSchema = false)
-@TypeConverters(Converter::class)
+@Database(entities = [Item::class, Outfit::class], version = 1, exportSchema = false)
+@TypeConverters(BitmapConverter::class, ArrayConverter::class)
 abstract class ItemDatabase : RoomDatabase() {
-    abstract fun itemDao() : ItemDao
+    abstract fun itemDao(): ItemDao
+    abstract fun outfitDao(): OutfitDao
 
     companion object {
         @Volatile
@@ -27,7 +28,7 @@ abstract class ItemDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ItemDatabase::class.java,
-                    "item_database"
+                    "database"
                 ).build()
                 INSTANCE = instance
                 return instance

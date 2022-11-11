@@ -1,7 +1,6 @@
 package com.sosa.final_project.data
 
 import android.graphics.Bitmap
-import androidx.annotation.DrawableRes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,6 +9,7 @@ import androidx.room.PrimaryKey
 data class Item(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val image: Bitmap
+    val image: Bitmap,
+    val selected: Boolean
 )
 
