@@ -12,6 +12,9 @@ class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
     //list of all item in the wardrobe
     val wardrobe: LiveData<List<Item>> = itemDao.getAllItems().asLiveData()
 
+    //list of all items currently selected
+    val selected: List<Item> = mutableListOf<Item>()
+
 
     //inserts an item into the database
     fun addItem(item: Item) = viewModelScope.launch(Dispatchers.IO) {

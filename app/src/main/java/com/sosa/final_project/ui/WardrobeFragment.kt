@@ -42,8 +42,7 @@ class WardrobeFragment : Fragment() {
     }
 
     // initialize recycler adapter
-    private val adapter by lazy { WardrobeAdapter { item ->
-            findNavController().navigate(R.id.action_wardrobeFragment_to_homeFragment)
+    private val adapter by lazy { WardrobeAdapter{ item ->
             wardrobeViewModel.deleteItem(item)
         }
     }

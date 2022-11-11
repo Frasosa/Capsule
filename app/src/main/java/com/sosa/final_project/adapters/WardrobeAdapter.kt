@@ -1,9 +1,9 @@
 package com.sosa.final_project.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ListView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +14,7 @@ import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 
 class WardrobeAdapter (private val clickListener: (Item) -> Unit):
     ListAdapter<Item, WardrobeAdapter.ItemViewHolder>(DiffCallback) {
+
 
     private var wardrobe = emptyList<Item>()
         set(value) {
@@ -59,6 +60,7 @@ class WardrobeAdapter (private val clickListener: (Item) -> Unit):
         holder.image.load(item.image)
         holder.itemView.setOnLongClickListener{
             clickListener(item)
+            //holder.itemView.setBackgroundColor(Color.RED)
             true
         }
     }
@@ -66,7 +68,5 @@ class WardrobeAdapter (private val clickListener: (Item) -> Unit):
 
     fun setData(wardrobe: List<Item>) {
         this.wardrobe = wardrobe
-        //notifyItemInserted(wardrobe.lastIndex)
-        notifyDataSetChanged()
     }
 }
