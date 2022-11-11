@@ -28,14 +28,6 @@ abstract class ItemDatabase : RoomDatabase() {
             if (tempInstance != null)
                 return tempInstance
 
-            var rdc: Callback = object : Callback() {
-                override fun onCreate(db: SupportSQLiteDatabase) {
-                    getDatabase(context).outfitDao().insertOutfit(Outfit("monday",
-                        listOf<Item>() as MutableList<Item>
-                    ))
-                }
-            }
-
             //Otherwise we make one and return it with synchronization
             synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -43,7 +35,6 @@ abstract class ItemDatabase : RoomDatabase() {
                     ItemDatabase::class.java,
                     "database"
                 )
-                    .addCallback(rdc)
                     .build()
 
                 INSTANCE = instance
