@@ -69,7 +69,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToOutfitOfTheDay(day: String) {
-        outfitViewModel.setOutfit(day)
+        //outfitViewModel.setOutfit(day)
         findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
     }
 

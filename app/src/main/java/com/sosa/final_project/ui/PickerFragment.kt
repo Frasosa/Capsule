@@ -1,28 +1,20 @@
 package com.sosa.final_project.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import androidx.compose.runtime.currentComposer
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.adapters.PickerAdapter
-import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.databinding.FragmentPickerBinding
-import com.sosa.final_project.databinding.FragmentWardrobeBinding
 import com.sosa.final_project.model.OutfitViewModelFactory
 import com.sosa.final_project.model.OutfitViewModelWIP
 import com.sosa.final_project.model.WardrobeViewModel
 import com.sosa.final_project.model.WardrobeViewModelFactory
-import okhttp3.internal.notify
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,10 +41,8 @@ class PickerFragment : Fragment() {
 
     // initialize recycler adapter
     private val adapter by lazy { PickerAdapter{ item ->
-        outfitViewModel.currentDay.let {
-            outfitViewModel.updateOutfit(it, item)
+            outfitViewModel.updateOutfit(item)
             findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
-            }
         }
     }
 

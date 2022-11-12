@@ -6,8 +6,12 @@ import com.google.gson.Gson
 class ArrayConverter {
 
     @TypeConverter
-    fun listToJson(value: MutableList<Item>) = Gson().toJson(value)
+    fun listToJson(value: MutableList<Item>) : String {
+        return Gson().toJson(value)
+    }
 
     @TypeConverter
-    fun jsonToList(value: String) = Gson().fromJson(value, Array<Item>::class.java).toMutableList()
+    fun jsonToList(value: String) : MutableList<Item> {
+        return Gson().fromJson(value, Array<Item>::class.java).toMutableList()
+    }
 }

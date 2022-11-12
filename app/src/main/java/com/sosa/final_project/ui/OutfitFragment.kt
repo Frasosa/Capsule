@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.adapters.OutfitAdapter
+import com.sosa.final_project.data.Item
+import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.model.OutfitViewModelFactory
@@ -26,6 +29,9 @@ class OutfitFragment : Fragment() {
     private val outfitViewModel: OutfitViewModelWIP by activityViewModels{
         OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
+
+    private val adapter by lazy {OutfitAdapter()}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -38,16 +44,24 @@ class OutfitFragment : Fragment() {
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
         val root = binding.root
 
-
-
         //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_outfitFragment_to_pickerFragment)
         }
 
+        outfitViewModel.mondayLiveData.observe(viewLifecycleOwner) {
+            if (outfitViewModel.mondayLiveData.value != null) {
+                println("MADE IT HERE")
+                adapter.setData(outfitViewModel.mondayLiveData.value!!)
+            } else {
+                println("NO MONDAY YET")
+                adapter.setData(Outfit("monday", mutableListOf<Item>()))
+            }
+        }
+
         //Initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = OutfitAdapter(outfitViewModel.currentDay)
+        recyclerView.adapter = adapter
 
         // Inflate the layout for this fragment
         return root

@@ -59,7 +59,6 @@ class PickerAdapter (private val clickListener: (Item) -> Unit):
         }
     }
 
-
     fun setData(wardrobe: List<Item>) {
         this.wardrobe = wardrobe
         notifyDataSetChanged()

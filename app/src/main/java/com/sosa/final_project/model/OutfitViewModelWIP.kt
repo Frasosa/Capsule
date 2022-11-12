@@ -1,24 +1,24 @@
 package com.sosa.final_project.model
 
 import androidx.lifecycle.*
+import androidx.room.util.copy
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.data.OutfitDao
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.launch
 
 class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
 
-    var monday: Outfit = Outfit("monday", mutableListOf())
-    val tuesday: LiveData<Outfit> = outfitDao.getOutfit("tuesday").asLiveData()
-    val wednesday: LiveData<Outfit> = outfitDao.getOutfit("wednesday").asLiveData()
-    val thursday: LiveData<Outfit> = outfitDao.getOutfit("thursday").asLiveData()
-    val friday: LiveData<Outfit> = outfitDao.getOutfit("friday").asLiveData()
-    val saturday: LiveData<Outfit> = outfitDao.getOutfit("saturday").asLiveData()
-    val sunday: LiveData<Outfit> = outfitDao.getOutfit("sunday").asLiveData()
+    var mondayLiveData: LiveData<Outfit> = outfitDao.getOutfit("monday")
+    val tuesday: LiveData<Outfit> = outfitDao.getOutfit("tuesday")
+    val wednesday: LiveData<Outfit> = outfitDao.getOutfit("wednesday")
+    val thursday: LiveData<Outfit> = outfitDao.getOutfit("thursday")
+    val friday: LiveData<Outfit> = outfitDao.getOutfit("friday")
+    val saturday: LiveData<Outfit> = outfitDao.getOutfit("saturday")
+    val sunday: LiveData<Outfit> = outfitDao.getOutfit("sunday")
 
-    var currentDay: Outfit = monday
+    //var currentDay: Outfit
 
 
     //inserts an item into the database
@@ -34,16 +34,25 @@ class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
     }
 
     //gets an item given an id from the database
-    fun updateOutfit(outfit: Outfit, item: Item) {
-        monday.items.add(item)
-        viewModelScope.launch(Dispatchers.IO) {
-            monday.let { outfitDao.insertOutfit(it) }
+    fun updateOutfit(item: Item) {
+        if (mondayLiveData.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                println("Here")
+                mondayLiveData.value?.items?.add(item.copy())
+                outfitDao.updateOutfit(mondayLiveData.value!!)
+            }
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                val tmpList = mutableListOf<Item>()
+                tmpList.add(item.copy())
+                outfitDao.insertOutfit(Outfit("monday", tmpList))
+            }
         }
     }
 
     fun setOutfit(day: String) {
-        if (day == "monday")
-            currentDay = monday
+        //if (day == "monday")
+            //mondayLiveData = outfitDao.getOutfit("monday").asLiveData()
     }
 
 }
