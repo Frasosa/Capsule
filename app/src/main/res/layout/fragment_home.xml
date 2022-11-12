@@ -15,15 +15,15 @@
         android:layout_width="275dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="16dp"
         android:fontFamily="@font/raphtalia"
         android:text="Capsule"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        android:textColor="@color/white"
+        android:textColor="@color/titleHome"
         android:textSize="70dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/sunday_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,12 +35,12 @@
         android:text="Wardrobe"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        android:textColor="@color/white"
+        android:textColor="@color/titleHome"
         android:textSize="70dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sunday_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
+
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -55,8 +55,8 @@
         android:text="Sunday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -70,8 +70,8 @@
         android:text="Monday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -85,8 +85,8 @@
         android:text="Tuesday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -100,8 +100,8 @@
         android:text="Wednesday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -115,8 +115,8 @@
         android:text="Thursday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -130,8 +130,8 @@
         android:text="Friday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
     <Button
@@ -146,8 +146,8 @@
         android:text="Saturday"
         android:textSize="20dp"
         android:fontFamily="@font/raphtalia"
-        android:backgroundTint="#cfd8dc"
-        android:textColor="#00600f"
+        android:backgroundTint="@color/buttonBackTint"
+        android:textColor="@color/buttonTextTint"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
