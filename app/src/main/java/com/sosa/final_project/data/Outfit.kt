@@ -1,5 +1,6 @@
 package com.sosa.final_project.data
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,5 +9,5 @@ import androidx.room.PrimaryKey
 data class Outfit(
     @PrimaryKey
     val day : String,
-    var items : MutableList<Item>
+    var items : MutableList<Bitmap>
 )

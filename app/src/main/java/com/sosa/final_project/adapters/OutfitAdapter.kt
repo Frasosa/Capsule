@@ -1,6 +1,7 @@
 package com.sosa.final_project.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -18,7 +19,7 @@ import com.sosa.final_project.ui.OutfitFragment
 
 class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCallback) {
 
-    private var outfit = mutableListOf<Item>()
+    private var outfit = emptyList<Bitmap>()
 
     companion object DiffCallback: DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
@@ -55,7 +56,7 @@ class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCal
         //val resources = context.resources
         val item = outfit[position]
         // Update the three text views and the image view for the current card
-        holder.image.load(item.image)
+        holder.image.load(item)
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -1,5 +1,6 @@
 package com.sosa.final_project.ui
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,7 +56,7 @@ class OutfitFragment : Fragment() {
                 adapter.setData(outfitViewModel.mondayLiveData.value!!)
             } else {
                 println("NO MONDAY YET")
-                adapter.setData(Outfit("monday", mutableListOf<Item>()))
+                adapter.setData(Outfit("monday", mutableListOf<Bitmap>()))
             }
         }
 

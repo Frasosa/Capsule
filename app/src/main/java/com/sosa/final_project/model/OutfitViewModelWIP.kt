@@ -1,5 +1,6 @@
 package com.sosa.final_project.model
 
+import android.graphics.Bitmap
 import androidx.lifecycle.*
 import androidx.room.util.copy
 import com.sosa.final_project.data.Item
@@ -21,32 +22,27 @@ class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
     //var currentDay: Outfit
 
 
-    //inserts an item into the database
-    fun addOutfit(outfit: Outfit) = viewModelScope.launch(Dispatchers.IO) {
-        outfitDao.insertOutfit(outfit)
+    //gets an item given an id from the database
+    fun updateOutfit(item: Item) {
+        if (mondayLiveData.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                println("Here")
+                mondayLiveData.value?.items?.add(item.image.copy(item.image.config, true))
+                outfitDao.updateOutfit(mondayLiveData.value!!)
+            }
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                val tmpList = mutableListOf<Bitmap>()
+                tmpList.add(item.image.copy(item.image.config, true))
+                outfitDao.insertOutfit(Outfit("monday", tmpList))
+            }
+        }
     }
 
     //deletes an item from the database
     fun deleteOutfit(outfit: Outfit) {
         viewModelScope.launch(Dispatchers.IO) {
             outfitDao.deleteOutfit(outfit)
-        }
-    }
-
-    //gets an item given an id from the database
-    fun updateOutfit(item: Item) {
-        if (mondayLiveData.value != null) {
-            viewModelScope.launch(Dispatchers.IO) {
-                println("Here")
-                mondayLiveData.value?.items?.add(item.copy())
-                outfitDao.updateOutfit(mondayLiveData.value!!)
-            }
-        } else {
-            viewModelScope.launch(Dispatchers.IO) {
-                val tmpList = mutableListOf<Item>()
-                tmpList.add(item.copy())
-                outfitDao.insertOutfit(Outfit("monday", tmpList))
-            }
         }
     }
 
