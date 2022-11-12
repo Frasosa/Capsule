@@ -56,7 +56,7 @@ class OutfitFragment : Fragment() {
                 adapter.setData(outfitViewModel.mondayLiveData.value!!)
             } else {
                 println("NO MONDAY YET")
-                adapter.setData(Outfit("monday", mutableListOf<Bitmap>()))
+                adapter.setData(Outfit("monday", mutableListOf<String>()))
             }
         }
 

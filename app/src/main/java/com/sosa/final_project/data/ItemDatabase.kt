@@ -13,7 +13,7 @@ import java.util.concurrent.Executors
  * This database stores a [Item] entity
  */
 @Database(entities = [Item::class, Outfit::class], version = 1, exportSchema = false)
-@TypeConverters(BitmapConverter::class, ArrayConverter::class)
+@TypeConverters(BitmapConverter::class, ImageBitmapString::class, ArrayConverter::class)
 abstract class ItemDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
     abstract fun outfitDao(): OutfitDao

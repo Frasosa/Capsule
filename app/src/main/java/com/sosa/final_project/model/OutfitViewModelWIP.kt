@@ -3,6 +3,7 @@ package com.sosa.final_project.model
 import android.graphics.Bitmap
 import androidx.lifecycle.*
 import androidx.room.util.copy
+import com.sosa.final_project.data.ImageBitmapString
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.data.OutfitDao
@@ -27,13 +28,13 @@ class OutfitViewModelWIP(private val outfitDao: OutfitDao) : ViewModel() {
         if (mondayLiveData.value != null) {
             viewModelScope.launch(Dispatchers.IO) {
                 println("Here")
-                mondayLiveData.value?.items?.add(item.image.copy(item.image.config, true))
+                mondayLiveData.value?.items?.add(ImageBitmapString.BitMapToString(item.image))
                 outfitDao.updateOutfit(mondayLiveData.value!!)
             }
         } else {
             viewModelScope.launch(Dispatchers.IO) {
-                val tmpList = mutableListOf<Bitmap>()
-                tmpList.add(item.image.copy(item.image.config, true))
+                val tmpList = mutableListOf<String>()
+                tmpList.add(ImageBitmapString.BitMapToString(item.image))
                 outfitDao.insertOutfit(Outfit("monday", tmpList))
             }
         }

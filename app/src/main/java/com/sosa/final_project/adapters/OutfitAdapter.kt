@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.sosa.final_project.data.DataSource.wardrobe
+import com.sosa.final_project.data.ImageBitmapString
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
@@ -19,7 +20,7 @@ import com.sosa.final_project.ui.OutfitFragment
 
 class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCallback) {
 
-    private var outfit = emptyList<Bitmap>()
+    private var outfit = emptyList<String>()
 
     companion object DiffCallback: DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
@@ -56,7 +57,7 @@ class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCal
         //val resources = context.resources
         val item = outfit[position]
         // Update the three text views and the image view for the current card
-        holder.image.load(item)
+        holder.image.load(ImageBitmapString.StringToBitMap(item))
     }
 
     @SuppressLint("NotifyDataSetChanged")
