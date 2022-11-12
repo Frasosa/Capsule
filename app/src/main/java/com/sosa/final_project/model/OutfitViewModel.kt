@@ -1,39 +1,74 @@
 package com.sosa.final_project.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.sosa.final_project.data.DataSource
+import androidx.lifecycle.*
+import com.sosa.final_project.data.converters.OutfitConverter
+import com.sosa.final_project.data.Item
+import com.sosa.final_project.data.Outfit
+import com.sosa.final_project.data.OutfitDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class OutfitViewModel : ViewModel() {
-    //Complete list of outfits for the week
-    private val weeklyOutfits = DataSource.weeklyOutfits
+class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
 
-    //TODO: ADD MUTABLE AND LIVE DATA
+    private var sundayOutfit: LiveData<Outfit> = outfitDao.getOutfit("sunday")
+    private var mondayOutfit: LiveData<Outfit> = outfitDao.getOutfit("monday")
+    private var tuesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("tuesday")
+    private var wednesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("wednesday")
+    private var thursdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("thursday")
+    private var fridayOutfit: LiveData<Outfit> = outfitDao.getOutfit("friday")
+    private var saturdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("saturday")
 
-    //Current outfit for outfit fragment to display
-    private val _outfit = MutableLiveData<MutableList<Int>>()
-    //TODO MAKE PUBLIC LATER
-    private val outfit: LiveData<MutableList<Int>> = _outfit
+    lateinit var currentOutfit: LiveData<Outfit>
+    lateinit var currentDay: String
 
 
-    /* function to set the outfit for the outfit fragment depending on the day */
-    fun setOutfit (day: String) {
-        _outfit.value = weeklyOutfits[day]
+    // will either update the outfit for that day or initialize it in the database
+    fun updateOutfit(item: Item) {
+        if (currentOutfit.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                currentOutfit.value?.items?.add(OutfitConverter.BitMapToString(item.image))
+                outfitDao.updateOutfit(currentOutfit.value!!)
+            }
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                val tmpList = mutableListOf<String>()
+                tmpList.add(OutfitConverter.BitMapToString(item.image))
+                outfitDao.insertOutfit(Outfit(currentDay, tmpList))
+            }
+        }
     }
 
-    /* function to set the outfit for the outfit fragment depending on the day */
-    fun getOutfit (): MutableList<Int> {
-        return outfit.value!!
+    // deletes an item from the database
+    fun deleteOutfit(outfit: Outfit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            outfitDao.deleteOutfit(outfit)
+        }
     }
 
-    fun entireWardrobe (): MutableList<Int> {
-        return DataSource.wardrobe
+    // sets the current outfit to the day chosen
+    fun setOutfit(day: String) {
+        currentOutfit = when (day) {
+            "sunday" -> sundayOutfit
+            "monday" -> mondayOutfit
+            "tuesday" -> tuesdayOutfit
+            "wednesday" -> wednesdayOutfit
+            "thursday" -> thursdayOutfit
+            "friday" -> fridayOutfit
+            else -> saturdayOutfit
+        }
+        currentDay = day
     }
+}
 
-    //TODO: ADD FUNCTION TO EDIT AN OUTFIT FOR A DAY
-
-    //TODO: ADD FUNCTION TO CLEAR AN OUTFIT FOR A DAY
-
-    //TODO: ADD FUNCTION TO CLEAR FUNCTION FOR THE WEEK?
+// view model factory that takes a OutfitDao as a property and
+// creates a OutfitViewModel
+class OutfitViewModelFactory(private val outfitDao: OutfitDao)
+    : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(OutfitViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return OutfitViewModel(outfitDao) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

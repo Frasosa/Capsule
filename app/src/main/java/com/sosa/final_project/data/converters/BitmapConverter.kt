@@ -1,4 +1,4 @@
-package com.sosa.final_project.data
+package com.sosa.final_project.data.converters
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

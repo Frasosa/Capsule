@@ -11,10 +11,7 @@ import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.adapters.PickerAdapter
 import com.sosa.final_project.databinding.FragmentPickerBinding
-import com.sosa.final_project.model.OutfitViewModelFactory
-import com.sosa.final_project.model.OutfitViewModelWIP
-import com.sosa.final_project.model.WardrobeViewModel
-import com.sosa.final_project.model.WardrobeViewModelFactory
+import com.sosa.final_project.model.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,15 +28,15 @@ class PickerFragment : Fragment() {
     private var _binding: FragmentPickerBinding? = null
     private val binding get() = _binding!!
 
-    // get view model
+    // get view models
     private val wardrobeViewModel: WardrobeViewModel by activityViewModels{
         WardrobeViewModelFactory((activity?.application as BaseApplication).database.itemDao())
     }
-    private val outfitViewModel: OutfitViewModelWIP by activityViewModels{
+    private val outfitViewModel: OutfitViewModel by activityViewModels{
         OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
 
-    // initialize recycler adapter
+    // initialize adapter with onclick to add item to outfit
     private val adapter by lazy { PickerAdapter{ item ->
             outfitViewModel.updateOutfit(item)
             findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
@@ -52,18 +49,17 @@ class PickerFragment : Fragment() {
     ): View? {
         // get binding
         _binding = FragmentPickerBinding.inflate(inflater, container, false)
-        val root = binding.root
 
         // observe the current list of items in the wardrobe
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
             wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
         }
 
-        // Initialize recyclerview
+        // initialize recyclerview
         val recyclerView = binding.wardrobeRecyclerView
         recyclerView.adapter = adapter
 
         // Inflate the layout for this fragment
-        return root
+        return binding.root
     }
 }

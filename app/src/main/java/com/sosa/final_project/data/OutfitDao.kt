@@ -5,6 +5,7 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
+// interface for outfits in the database
 interface OutfitDao {
     // method to retrieve an outfit from the database by id
     @Query("SELECT * from outfit_database WHERE day = :day")
@@ -18,7 +19,7 @@ interface OutfitDao {
     @Update
     suspend fun updateOutfit(outfit: Outfit)
 
-    // method to delete a outfit from the database.
+    // method to delete a outfit from the database
     @Delete
     suspend fun deleteOutfit(outfit: Outfit)
 }

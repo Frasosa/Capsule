@@ -9,10 +9,10 @@ import kotlinx.coroutines.launch
 class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
 
     //list of all item in the wardrobe
-    val wardrobe: LiveData<List<Item>> = itemDao.getAllItems().asLiveData()
+    val wardrobe: LiveData<List<Item>> = itemDao.getWardrobe()
 
     //list of all items currently selected
-    val selected: List<Item> = mutableListOf<Item>()
+    //val selected: List<Item> = mutableListOf<Item>()
 
 
     //inserts an item into the database
@@ -25,11 +25,6 @@ class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             itemDao.deleteItem(item)
         }
-    }
-
-    //gets an item given an id from the database
-    fun getItem (id : Int) : LiveData<Item> {
-        return itemDao.getItem(id).asLiveData()
     }
 
 }

@@ -21,10 +21,12 @@ import com.sosa.final_project.model.*
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
+    // init binding
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: OutfitViewModel by activityViewModels()
-    private val outfitViewModel: OutfitViewModelWIP by activityViewModels{
+
+    // get view model
+    private val outfitViewModel: OutfitViewModel by activityViewModels{
         OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
 
@@ -36,7 +38,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        //set onclick listeners
+        //set onclick listeners for each button
         binding.sundayButton.setOnClickListener{
             goToOutfitOfTheDay("sunday")
         }
@@ -69,7 +71,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToOutfitOfTheDay(day: String) {
-        //outfitViewModel.setOutfit(day)
+        outfitViewModel.setOutfit(day)
         findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
     }
 

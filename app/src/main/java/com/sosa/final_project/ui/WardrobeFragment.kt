@@ -102,7 +102,7 @@ class WardrobeFragment : Fragment() {
     // inserts bitmap retrieved from camera into the database and tells adapter to show it
     private val cameraImage = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         lifecycleScope.launch {
-            val item = Item(0, it?.data?.extras?.get("data") as Bitmap, false)
+            val item = Item(0, it?.data?.extras?.get("data") as Bitmap)
             wardrobeViewModel.addItem(item)
         }
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
@@ -116,7 +116,7 @@ class WardrobeFragment : Fragment() {
         uri?.let {
             //do something with uri
             lifecycleScope.launch {
-                val item = Item(0, getBitmap(uri), false)
+                val item = Item(0, getBitmap(uri))
                 wardrobeViewModel.addItem(item)
             }
             wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {

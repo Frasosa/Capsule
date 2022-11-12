@@ -1,7 +1,6 @@
 package com.sosa.final_project.adapters
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,13 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.sosa.final_project.data.DataSource.wardrobe
-import com.sosa.final_project.data.ImageBitmapString
+import com.sosa.final_project.data.converters.OutfitConverter
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
-import com.sosa.final_project.model.OutfitViewModel
-import com.sosa.final_project.ui.OutfitFragment
 
 
 class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCallback) {
@@ -57,7 +53,7 @@ class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCal
         //val resources = context.resources
         val item = outfit[position]
         // Update the three text views and the image view for the current card
-        holder.image.load(ImageBitmapString.StringToBitMap(item))
+        holder.image.load(OutfitConverter.StringToBitMap(item))
     }
 
     @SuppressLint("NotifyDataSetChanged")

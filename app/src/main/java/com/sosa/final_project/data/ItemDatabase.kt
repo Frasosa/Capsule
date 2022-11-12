@@ -2,18 +2,17 @@ package com.sosa.final_project.data
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
+import com.sosa.final_project.data.converters.ArrayConverter
+import com.sosa.final_project.data.converters.BitmapConverter
+import com.sosa.final_project.data.converters.OutfitConverter
 
 
 /**
  * Room database to persist data for the Capsule app.
  * This database stores a [Item] entity
  */
-@Database(entities = [Item::class, Outfit::class], version = 1, exportSchema = false)
-@TypeConverters(BitmapConverter::class, ImageBitmapString::class, ArrayConverter::class)
+@Database(entities = [Item::class, Outfit::class], version = 2, exportSchema = false)
+@TypeConverters(BitmapConverter::class, OutfitConverter::class, ArrayConverter::class)
 abstract class ItemDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
     abstract fun outfitDao(): OutfitDao
@@ -35,6 +34,7 @@ abstract class ItemDatabase : RoomDatabase() {
                     ItemDatabase::class.java,
                     "database"
                 )
+                    .fallbackToDestructiveMigration()
                     .build()
 
                 INSTANCE = instance

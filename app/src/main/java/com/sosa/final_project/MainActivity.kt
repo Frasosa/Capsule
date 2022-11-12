@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
 
     // Override back button functionality for action bar
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        // Navigate all the way back to home screen
+        while (navController.currentDestination != navController.findDestination(R.id.homeFragment))
+            navController.navigateUp()
+        return true
     }
 }

@@ -1,4 +1,4 @@
-package com.sosa.final_project.data;
+package com.sosa.final_project.data.converters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,8 +8,10 @@ import androidx.room.TypeConverter;
 
 import java.io.ByteArrayOutputStream;
 
-//credit to https://medium.com/@uttam.cooch/save-images-in-room-persistence-library-c71b60865b7e
-public class ImageBitmapString {
+// credit to https://medium.com/@uttam.cooch/save-images-in-room-persistence-library-c71b60865b7e
+// type converter that is used manually, and not passed to database
+// used to change bitmaps to and from strings when interacting with outfits
+public class OutfitConverter {
     @TypeConverter
     public static String BitMapToString(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -32,7 +34,6 @@ public class ImageBitmapString {
             } else {
                 return bitmap;
             }
-
         } catch (Exception e) {
             e.getMessage();
             return null;
