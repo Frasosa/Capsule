@@ -1,10 +1,11 @@
 package com.sosa.final_project.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.sosa.final_project.BaseApplication
@@ -12,6 +13,7 @@ import com.sosa.final_project.R
 import com.sosa.final_project.adapters.PickerAdapter
 import com.sosa.final_project.databinding.FragmentPickerBinding
 import com.sosa.final_project.model.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +51,12 @@ class PickerFragment : Fragment() {
     ): View? {
         // get binding
         _binding = FragmentPickerBinding.inflate(inflater, container, false)
+
+        (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        binding.confirmFab.setOnClickListener {
+            findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
+        }
 
         // observe the current list of items in the wardrobe
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
