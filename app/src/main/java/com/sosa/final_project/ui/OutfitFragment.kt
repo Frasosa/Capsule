@@ -31,7 +31,9 @@ class OutfitFragment : Fragment() {
     }
 
     // TODO: init adapter with onclick
-    private val adapter by lazy {OutfitAdapter()}
+    private val adapter by lazy {OutfitAdapter{ item ->
+        outfitViewModel.updateOutfitRemoval(item)
+    }}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

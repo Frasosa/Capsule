@@ -14,7 +14,8 @@ import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 
 
-class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCallback) {
+class OutfitAdapter(private val clickListener: (String) -> Unit):
+    ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCallback) {
 
     private var outfit = emptyList<String>()
 
@@ -52,8 +53,13 @@ class OutfitAdapter(): ListAdapter<Item, OutfitAdapter.OutfitViewHolder>(DiffCal
         // Get current item
         //val resources = context.resources
         val item = outfit[position]
-        // Update the three text views and the image view for the current card
+        // load the image and set onclick for removal
         holder.image.load(OutfitConverter.StringToBitMap(item))
+        holder.itemView.setOnLongClickListener{
+            clickListener(item)
+            notifyItemRemoved(position)
+            true
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -40,7 +40,7 @@ class PickerFragment : Fragment() {
 
     // initialize adapter with onclick to add item to outfit
     private val adapter by lazy { PickerAdapter{ item ->
-            outfitViewModel.updateOutfit(item)
+            outfitViewModel.updateOutfitInsertion(item)
             findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
         }
     }

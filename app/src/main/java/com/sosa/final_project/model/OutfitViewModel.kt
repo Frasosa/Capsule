@@ -22,8 +22,8 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
     lateinit var currentDay: String
 
 
-    // will either update the outfit for that day or initialize it in the database
-    fun updateOutfit(item: Item) {
+    // will either update the outfit by adding the item or initialize it in the database
+    fun updateOutfitInsertion(item: Item) {
         if (currentOutfit.value != null) {
             viewModelScope.launch(Dispatchers.IO) {
                 currentOutfit.value?.items?.add(OutfitConverter.BitMapToString(item.image))
@@ -37,6 +37,14 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
             }
         }
     }
+
+    // will either update the outfit to remove and item
+    fun updateOutfitRemoval(item: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            currentOutfit.value?.items?.remove(item)
+            outfitDao.updateOutfit(currentOutfit.value!!)
+        }
+}
 
     // deletes an item from the database
     fun deleteOutfit(outfit: Outfit) {
