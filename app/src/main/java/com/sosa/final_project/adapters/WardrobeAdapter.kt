@@ -15,8 +15,7 @@ import com.sosa.final_project.databinding.FragmentWardrobeBinding
 import com.sosa.final_project.model.WardrobeViewModel
 
 
-class WardrobeAdapter (private val clickListener: (Item, Boolean) -> Unit,
-                       private val longClickListener: (Item) -> Unit):
+class WardrobeAdapter (private val clickListener: (Item, Boolean) -> Unit):
     ListAdapter<Item, WardrobeAdapter.ItemViewHolder>(DiffCallback) {
 
     // list of all items for adapter
@@ -71,11 +70,11 @@ class WardrobeAdapter (private val clickListener: (Item, Boolean) -> Unit,
             holder.selected = !holder.selected
         }
 
-        holder.itemView.setOnLongClickListener {
-            longClickListener(item)
-            notifyItemRemoved(position)
-            true
-        }
+//        holder.itemView.setOnLongClickListener {
+//            longClickListener(item)
+//            notifyItemRemoved(position)
+//            true
+//        }
 
     }
 

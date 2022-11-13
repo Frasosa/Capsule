@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
-import com.sosa.final_project.adapters.PickerAdapter
+import com.sosa.final_project.adapters.WardrobeAdapter
 import com.sosa.final_project.databinding.FragmentPickerBinding
 import com.sosa.final_project.model.*
 
@@ -32,7 +32,7 @@ class PickerFragment : Fragment() {
     }
 
     // initialize adapter with onclick to add select items
-    private val adapter by lazy { PickerAdapter{ item, selected ->
+    private val adapter by lazy { WardrobeAdapter{ item, selected ->
             if (!selected)
                 outfitViewModel.selectItem(item)
             else
@@ -63,7 +63,9 @@ class PickerFragment : Fragment() {
 
         // observe the current list of items in the wardrobe
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
-            wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1)
+                setHint()
+            }
         }
 
         // initialize recyclerview
@@ -72,5 +74,13 @@ class PickerFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    // set the visibility of the text to tell the user what to do
+    private fun setHint() {
+        if (wardrobeViewModel.isEmpty())
+            binding.hint.visibility = View.VISIBLE
+        else
+            binding.hint.visibility = View.INVISIBLE
     }
 }

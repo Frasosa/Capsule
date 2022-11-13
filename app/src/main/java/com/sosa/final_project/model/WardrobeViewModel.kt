@@ -24,6 +24,10 @@ class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
         selectedItems.remove(item)
     }
 
+    fun deselectAll() {
+        selectedItems.clear()
+    }
+
     // deletes all the items selected
     fun trashItems() {
         selectedItems.forEach {

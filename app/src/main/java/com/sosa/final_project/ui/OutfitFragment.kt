@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,7 @@ import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.model.OutfitViewModelFactory
+import okhttp3.internal.wait
 
 /**
  * A reusable fragment
@@ -42,6 +44,8 @@ class OutfitFragment : Fragment() {
     ): View? {
         //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
+
+        (activity as AppCompatActivity?)!!.supportActionBar?.title = "" + outfitViewModel.currentDay.capitalize() + "'s Outfit"
 
         // sets onclick for button to delete the outfit
         binding.deleteFab.setOnClickListener {

@@ -1,6 +1,9 @@
 package com.sosa.final_project
 
+import android.app.Fragment
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -20,22 +23,36 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Retrieve NavController from the NavHostFragment
+        // retrieve NavController from the NavHostFragment
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        // Set up bottom navigation
+
+        // set up bottom navigation
         setupActionBarWithNavController(navController,
             AppBarConfiguration(setOf(R.id.wardrobeFragment, R.id.homeFragment, R.id.weatherFragment)))
         binding.bottomNavigationMenu.setupWithNavController(navController)
+
+
+        // override home click to go back to home fragment, without impacting bottom nav bar setup
+        binding.bottomNavigationMenu.setOnNavigationItemSelectedListener {
+            if (NavigationUI.onNavDestinationSelected(it, navController)) {
+                true
+            } else {
+                while (navController.currentDestination != navController.findDestination(R.id.homeFragment))
+                    navController.navigateUp()
+                true
+            }
+        }
     }
 
-    // Override back button functionality for action bar
+    // override back button functionality for action bar
     override fun onSupportNavigateUp(): Boolean {
-        // Navigate all the way back to home screen
+        // navigate all the way back to home screen
         while (navController.currentDestination != navController.findDestination(R.id.homeFragment))
             navController.navigateUp()
         return true
     }
+
+
 }

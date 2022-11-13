@@ -43,16 +43,24 @@ class WardrobeFragment : Fragment() {
     }
 
     // initialize recycler adapter
-    private val adapter by lazy { WardrobeAdapter({ item, selected ->
+    private val adapter by lazy { WardrobeAdapter{ item, selected ->
         if (!selected)
             wardrobeViewModel.selectItem(item)
         else
             wardrobeViewModel.deselectItem(item)
-        }, {item, ->
-            wardrobeViewModel.removeItem(item)
-            setHint()
-        })
+        }
     }
+
+//    private val adapter by lazy { WardrobeAdapter({ item, selected ->
+//        if (!selected)
+//            wardrobeViewModel.selectItem(item)
+//        else
+//            wardrobeViewModel.deselectItem(item)
+//    }, {item, ->
+//        wardrobeViewModel.removeItem(item)
+//        setHint()
+//    })
+//    }
 
     // initialize animations
     private val rotateOpen: Animation by lazy {AnimationUtils.loadAnimation(
@@ -77,7 +85,7 @@ class WardrobeFragment : Fragment() {
         _binding = FragmentWardrobeBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        //setHint()
+        wardrobeViewModel.deselectAll()
 
         // Functionality for expandable buttons
         binding.addFab.setOnClickListener {
@@ -106,7 +114,9 @@ class WardrobeFragment : Fragment() {
 
         // observe the current list of items in the wardrobe
         wardrobeViewModel.wardrobe.observe(viewLifecycleOwner) {
-            wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1) }
+                wardrobeViewModel.wardrobe.value?.let { it1 -> adapter.setData(it1)
+                setHint()
+            }
         }
 
         // Initialize recyclerview
