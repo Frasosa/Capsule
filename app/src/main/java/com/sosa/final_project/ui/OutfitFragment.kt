@@ -1,5 +1,6 @@
 package com.sosa.final_project.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,8 +43,13 @@ class OutfitFragment : Fragment() {
         //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
 
+        // sets onclick for button to delete the outfit
+        binding.deleteFab.setOnClickListener {
+            outfitViewModel.deleteOutfit()
+        }
+
         // sets onclick for button to navigate to picker
-        binding.fab.setOnClickListener {
+        binding.pickItemsFab.setOnClickListener {
             findNavController().navigate(R.id.action_outfitFragment_to_pickerFragment)
         }
 

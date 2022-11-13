@@ -18,8 +18,4 @@ interface OutfitDao {
     // method to update a outfit that is already in the database
     @Update
     suspend fun updateOutfit(outfit: Outfit)
-
-    // method to delete a outfit from the database
-    @Delete
-    suspend fun deleteOutfit(outfit: Outfit)
 }

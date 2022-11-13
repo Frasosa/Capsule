@@ -78,9 +78,11 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
 }
 
     // deletes an item from the database
-    fun deleteOutfit(outfit: Outfit) {
-        viewModelScope.launch(Dispatchers.IO) {
-            outfitDao.deleteOutfit(outfit)
+    fun deleteOutfit() {
+        if (currentOutfit.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                outfitDao.updateOutfit(Outfit(currentDay, mutableListOf()))
+            }
         }
     }
 
