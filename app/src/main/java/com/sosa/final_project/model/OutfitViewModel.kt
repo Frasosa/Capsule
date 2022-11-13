@@ -10,17 +10,48 @@ import kotlinx.coroutines.launch
 
 class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
 
-    private var sundayOutfit: LiveData<Outfit> = outfitDao.getOutfit("sunday")
-    private var mondayOutfit: LiveData<Outfit> = outfitDao.getOutfit("monday")
-    private var tuesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("tuesday")
-    private var wednesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("wednesday")
-    private var thursdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("thursday")
-    private var fridayOutfit: LiveData<Outfit> = outfitDao.getOutfit("friday")
-    private var saturdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("saturday")
+    // data persistent outfits for each day
+    private val sundayOutfit: LiveData<Outfit> = outfitDao.getOutfit("sunday")
+    private val mondayOutfit: LiveData<Outfit> = outfitDao.getOutfit("monday")
+    private val tuesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("tuesday")
+    private val wednesdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("wednesday")
+    private val thursdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("thursday")
+    private val fridayOutfit: LiveData<Outfit> = outfitDao.getOutfit("friday")
+    private val saturdayOutfit: LiveData<Outfit> = outfitDao.getOutfit("saturday")
 
+    // variables to help display and edit the current outfit based on the day clicked
     lateinit var currentOutfit: LiveData<Outfit>
     lateinit var currentDay: String
 
+    // keeps track of items (bitmaps as strings) selected
+    private var selectedItems = mutableListOf<String>()
+
+    fun selectItem(item: Item) {
+        selectedItems.add(OutfitConverter.BitMapToString(item.image))
+    }
+
+    fun deselectItem(item: Item) {
+        selectedItems.remove(OutfitConverter.BitMapToString(item.image))
+    }
+
+    fun updateOutfit() {
+        // copy over selected list
+        val tmpList = mutableListOf<String>()
+        tmpList.addAll(selectedItems)
+
+        if (currentOutfit.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                currentOutfit.value?.items?.addAll(tmpList)
+                outfitDao.updateOutfit(currentOutfit.value!!)
+            }
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                outfitDao.insertOutfit(Outfit(currentDay, tmpList))
+            }
+        }
+        // clear selected list for next add
+        selectedItems.clear()
+    }
 
     // will either update the outfit by adding the item or initialize it in the database
     fun updateOutfitInsertion(item: Item) {

@@ -39,9 +39,13 @@ class PickerFragment : Fragment() {
     }
 
     // initialize adapter with onclick to add item to outfit
-    private val adapter by lazy { PickerAdapter{ item ->
-            outfitViewModel.updateOutfitInsertion(item)
-            findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
+    private val adapter by lazy { PickerAdapter{ item, selected ->
+
+            if (!selected)
+                outfitViewModel.selectItem(item)
+            else
+                outfitViewModel.deselectItem(item)
+            //findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
         }
     }
 
@@ -55,6 +59,7 @@ class PickerFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         binding.confirmFab.setOnClickListener {
+            outfitViewModel.updateOutfit()
             findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
         }
 

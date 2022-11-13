@@ -1,5 +1,6 @@
 package com.sosa.final_project.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,7 +12,7 @@ import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 
 
-class PickerAdapter (private val clickListener: (Item) -> Unit):
+class PickerAdapter (private val clickListener: (Item, Boolean) -> Unit):
     ListAdapter<Item, PickerAdapter.ItemViewHolder>(DiffCallback) {
 
 
@@ -34,6 +35,7 @@ class PickerAdapter (private val clickListener: (Item) -> Unit):
     class ItemViewHolder(binding: FragmentRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
         // Declare and initialize all of the list item UI components
         val image: ImageView = binding.itemImage
+        var selected = false
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -54,8 +56,12 @@ class PickerAdapter (private val clickListener: (Item) -> Unit):
         // Update the three text views and the image view for the current card
         holder.image.load(item.image)
         holder.itemView.setOnClickListener{
-            clickListener(item)
-            //holder.itemView.setBackgroundColor(Color.RED)
+            if (!holder.selected)
+                holder.itemView.setBackgroundColor(Color.GREEN)
+            else
+                holder.itemView.setBackgroundColor(0)
+            clickListener(item, holder.selected)
+            holder.selected = !holder.selected
         }
     }
 
