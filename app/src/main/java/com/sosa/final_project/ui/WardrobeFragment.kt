@@ -1,11 +1,14 @@
 package com.sosa.final_project.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media.getBitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +43,15 @@ class WardrobeFragment : Fragment() {
     }
 
     // initialize recycler adapter
-    private val adapter by lazy { WardrobeAdapter{ item ->
-            wardrobeViewModel.deleteItem(item)
-        }
+    private val adapter by lazy { WardrobeAdapter({ item, selected ->
+        if (!selected)
+            wardrobeViewModel.selectItem(item)
+        else
+            wardrobeViewModel.deselectItem(item)
+        }, {item, ->
+            wardrobeViewModel.removeItem(item)
+            setHint()
+        })
     }
 
     // initialize animations
@@ -59,6 +68,7 @@ class WardrobeFragment : Fragment() {
     // initialized to false which means only the add button is viewable
     private var clicked = false
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,12 +77,20 @@ class WardrobeFragment : Fragment() {
         _binding = FragmentWardrobeBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        //setHint()
+
         // Functionality for expandable buttons
         binding.addFab.setOnClickListener {
             setVisibility()
             setAnimation()
             setClickable()
             clicked = !clicked
+        }
+
+        // set onclick to trash items
+        binding.trashFab.setOnClickListener {
+            wardrobeViewModel.trashItems()
+            adapter.resetBackgrounds(binding, adapter.itemCount)
         }
 
         // on click for camera intent
@@ -170,6 +188,14 @@ class WardrobeFragment : Fragment() {
             binding.cameraFab.isClickable = false
             binding.galleryFab.isClickable = false
         }
+    }
+
+    // set the visibility of the text to tell the user what to do
+    private fun setHint() {
+        if (wardrobeViewModel.isEmpty())
+            binding.hint.visibility = View.VISIBLE
+        else
+            binding.hint.visibility = View.INVISIBLE
     }
 
 }

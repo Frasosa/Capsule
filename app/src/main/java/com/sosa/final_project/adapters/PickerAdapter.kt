@@ -15,10 +15,11 @@ import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 class PickerAdapter (private val clickListener: (Item, Boolean) -> Unit):
     ListAdapter<Item, PickerAdapter.ItemViewHolder>(DiffCallback) {
 
-
+    // list of items for the adapter to display
     private var wardrobe = emptyList<Item>()
 
 
+    // callback
     companion object DiffCallback: DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem.id == newItem.id
@@ -39,7 +40,7 @@ class PickerAdapter (private val clickListener: (Item, Boolean) -> Unit):
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // Inflate list item layout
+        // inflate list item layout
         val binding = FragmentRecyclerItemBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
@@ -53,14 +54,17 @@ class PickerAdapter (private val clickListener: (Item, Boolean) -> Unit):
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         // Get current item
         val item = wardrobe[position]
-        // Update the three text views and the image view for the current card
+        // load the image and set onclick listener for selection logic
         holder.image.load(item.image)
         holder.itemView.setOnClickListener{
+            // if selected turn background green to indicate
             if (!holder.selected)
                 holder.itemView.setBackgroundColor(Color.GREEN)
+            // if unselected reset background
             else
                 holder.itemView.setBackgroundColor(0)
             clickListener(item, holder.selected)
+            // invert value of selected for next click
             holder.selected = !holder.selected
         }
     }
@@ -69,4 +73,5 @@ class PickerAdapter (private val clickListener: (Item, Boolean) -> Unit):
         this.wardrobe = wardrobe
         notifyDataSetChanged()
     }
+
 }
