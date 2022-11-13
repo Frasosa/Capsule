@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/pickerFragment"
         android:name="com.sosa.final_project.ui.PickerFragment"
-        android:label=""
+        android:label="Pick items to add to outfit"
         tools:layout="@layout/fragment_picker" >
         <action
             android:id="@+id/action_pickerFragment_to_outfitFragment"

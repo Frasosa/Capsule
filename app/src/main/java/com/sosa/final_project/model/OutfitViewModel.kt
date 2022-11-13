@@ -26,12 +26,17 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
     // keeps track of items (bitmaps as strings) selected
     private var selectedItems = mutableListOf<String>()
 
+    // functions for interacting with the selected list
     fun selectItem(item: Item) {
         selectedItems.add(OutfitConverter.BitMapToString(item.image))
     }
 
     fun deselectItem(item: Item) {
         selectedItems.remove(OutfitConverter.BitMapToString(item.image))
+    }
+
+    fun deselectAll() {
+        selectedItems.clear()
     }
 
     fun updateOutfit() {
@@ -53,23 +58,7 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
         selectedItems.clear()
     }
 
-    // will either update the outfit by adding the item or initialize it in the database
-    fun updateOutfitInsertion(item: Item) {
-        if (currentOutfit.value != null) {
-            viewModelScope.launch(Dispatchers.IO) {
-                currentOutfit.value?.items?.add(OutfitConverter.BitMapToString(item.image))
-                outfitDao.updateOutfit(currentOutfit.value!!)
-            }
-        } else {
-            viewModelScope.launch(Dispatchers.IO) {
-                val tmpList = mutableListOf<String>()
-                tmpList.add(OutfitConverter.BitMapToString(item.image))
-                outfitDao.insertOutfit(Outfit(currentDay, tmpList))
-            }
-        }
-    }
-
-    // will either update the outfit to remove and item
+    // will update the outfit to remove the item passed
     fun updateOutfitRemoval(item: String) {
         viewModelScope.launch(Dispatchers.IO) {
             currentOutfit.value?.items?.remove(item)
@@ -77,7 +66,7 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
         }
 }
 
-    // deletes an item from the database
+    // clears the entire outfit for a day
     fun deleteOutfit() {
         if (currentOutfit.value != null) {
             viewModelScope.launch(Dispatchers.IO) {

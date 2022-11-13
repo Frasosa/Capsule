@@ -2,7 +2,6 @@ package com.sosa.final_project.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 // interface for outfits in the database

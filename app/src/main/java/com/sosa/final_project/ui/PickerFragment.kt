@@ -14,16 +14,9 @@ import com.sosa.final_project.adapters.PickerAdapter
 import com.sosa.final_project.databinding.FragmentPickerBinding
 import com.sosa.final_project.model.*
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * A simple [Fragment] subclass.
- * Use the [PickerFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment which displays the wardrobe for the user to select items from
+ * after which it will add the items to the current day's outfit
  */
 class PickerFragment : Fragment() {
     // get binding
@@ -38,14 +31,12 @@ class PickerFragment : Fragment() {
         OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
 
-    // initialize adapter with onclick to add item to outfit
+    // initialize adapter with onclick to add select items
     private val adapter by lazy { PickerAdapter{ item, selected ->
-
             if (!selected)
                 outfitViewModel.selectItem(item)
             else
                 outfitViewModel.deselectItem(item)
-            //findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
         }
     }
 
@@ -58,8 +49,15 @@ class PickerFragment : Fragment() {
 
         (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
+        // confirm onclick which adds selected items to outfit
         binding.confirmFab.setOnClickListener {
             outfitViewModel.updateOutfit()
+            findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
+        }
+
+        // cancel onclick which clears selected items and navigates back
+        binding.cancelFab.setOnClickListener {
+            outfitViewModel.deselectAll()
             findNavController().navigate(R.id.action_pickerFragment_to_outfitFragment)
         }
 
