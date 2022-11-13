@@ -14,18 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="194dp">
 
-        <!-- ImageView resource for the image of the character -->
         <ImageView
             android:id="@+id/item_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription=""
             android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/_002r"
-            android:contentDescription="" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/_002r" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
