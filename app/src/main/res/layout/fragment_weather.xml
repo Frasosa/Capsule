@@ -12,26 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
+
         <LinearLayout
             android:id="@+id/addressContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:textSize="24dp"
-                android:textColor="@color/white"/>
-<!--                android:text="AUSTIN, TX"/>-->
+                android:text="AUSTIN, TX"/>
             <TextView
                 android:id="@+id/updated_at"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:text="20 April 2012, 20:08 PM"
                 android:textColor="@color/white"
-                android:text="20 April 2012, 20:08 PM"/>
+                android:textSize="14dp" />
         </LinearLayout>
 
 
@@ -39,48 +41,51 @@
             android:id="@+id/overviewContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
                 android:layout_gravity="center"
+                android:text="Clear Sky"
                 android:textColor="@color/white"
-                android:text="Clear Sky"/>
+                android:textSize="18dp" />
+
             <TextView
                 android:id="@+id/temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="90dp"
-                android:fontFamily="sans-serif-thin"
                 android:layout_gravity="center"
+                android:fontFamily="sans-serif-thin"
+                android:text="69°F"
                 android:textColor="@color/white"
-                android:text="29°C"/>
+                android:textSize="90dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/temp_min"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Min Temp: 05:05 AM"/>
+                    android:text="Minimum: 69°F"
+                    android:textColor="@color/white" />
+
                 <Space
                     android:layout_width="50dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/temp_max"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Max Temp: 05:05 PM"/>
+                    android:text="Maximum: 69°F"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>
@@ -90,192 +95,188 @@
             android:id="@+id/detailsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentBottom="true">
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="Sunrise"/>
-                    <TextView
-                        android:id="@+id/sunrise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="06:40 AM"/>
-                </LinearLayout>
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="Sunset"/>
-                    <TextView android:id="@+id/sunset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="06:40 AM"/>
-                </LinearLayout>
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="Wind"/>
-                    <TextView
-                        android:id="@+id/wind"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="06:40 AM"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="3">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="1"
+                    android:background="#3CF1EBF1"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
                     <TextView
+                        android:id="@+id/day1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="Pressure"/>
+                        android:text="Monday"
+                        android:textSize="12dp" />
+
                     <TextView
-                        android:id="@+id/pressure"
+                        android:id="@+id/day1_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="06:40 AM"/>
+                        android:text="69°F"
+                        android:textSize="14dp" />
                 </LinearLayout>
+
                 <Space
                     android:layout_width="10dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="1"
+                    android:background="#3CF1EBF1"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
                     <TextView
+                        android:id="@+id/day2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="Humidity"/>
+                        android:text="Tuesday"
+                        android:textSize="12dp" />
+
                     <TextView
-                        android:id="@+id/humidity"
+                        android:id="@+id/day2_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:text="06:40 AM"/>
+                        android:text="69°F"
+                        android:textSize="14dp" />
                 </LinearLayout>
+
                 <Space
                     android:layout_width="10dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_weight="1"
+                    android:background="#3CF1EBF1"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:background="#3CF1EBF1">
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"/>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="5dp"/>
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
                     <TextView
+                        android:id="@+id/day3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12dp"/>
+                        android:text="Wednesday"
+                        android:textSize="12dp" />
+
                     <TextView
-                        android:id="@+id/about"
+                        android:id="@+id/day3_temp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="69°F"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#3CF1EBF1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/day4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thursday"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/day4_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="69°F"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#3CF1EBF1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/day5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Friday"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/day5_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="69°F"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#3CF1EBF1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/day6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saturday"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/day6_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="69°F"
                         android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
 
     <ProgressBar
         android:id="@+id/loader"
@@ -290,212 +291,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"
-        android:text="Something went wrong"/>
+        android:text="Oops! Something's not working, please try again."/>
 </RelativeLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<ScrollView-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        tools:context=".ui.WeatherFragment">-->
-<!--        <TextView-->
-<!--            android:id="@+id/weatherTitle"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/weekly_weather_forecast"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/city_text"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="@string/austin"-->
-<!--            android:textSize="34sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.498"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/weatherTitle" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/todayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="45dp"-->
-<!--            android:text="@string/_70"-->
-<!--            android:textSize="96sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/city_text" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/SundayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:text="@string/sunday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/todayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/MondayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/monday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/SundayTextView" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/TuesdayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/tuesday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/MondayTextView" />-->
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/WednesdayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/wednesday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/TuesdayTextView" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/ThursdayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/thursday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/WednesdayTextView" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/FridayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/friday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/ThursdayTextView" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/SaturdayTextView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginBottom="40dp"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:text="@string/saturday"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/FridayTextView" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/sundayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_65"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/todayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/MondayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_72"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/sundayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/TuesdayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_75"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/MondayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/WednesdayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_88"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/TuesdayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/ThursdayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_73"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/WednesdayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/FridayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_77"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/ThursdayDegree" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/SaturdayDegree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            android:layout_marginEnd="80dp"-->
-<!--            android:text="@string/_82"-->
-<!--            android:textSize="24sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/FridayDegree" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--</ScrollView>-->
