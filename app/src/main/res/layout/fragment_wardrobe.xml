@@ -28,6 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/raphtalia"
         android:visibility="invisible"
         android:textSize="24dp"
         android:text="Add items to your wardrobe!"

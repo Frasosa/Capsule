@@ -4,6 +4,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="weatherText">#FF000000</color>
+
     <color name="titleHome">#FF000000</color>
     <color name="buttonBackTint">#2e7d32</color>
     <color name="buttonTextTint">#FF000000</color>

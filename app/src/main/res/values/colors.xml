@@ -9,6 +9,7 @@
     <color name="buttonTextTint">#00600f</color>
     <color name="navColor">#FFFFFFFF</color>
 
+    <color name="weatherText">#FFFFFFFF</color>
 
     <color name="green">#1B5E20</color>
     <color name="green_dark">#003300</color>

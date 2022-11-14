@@ -24,8 +24,9 @@
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/weatherText"
                 android:textSize="24dp"
+                android:fontFamily="@font/raphtalia"
                 android:text="AUSTIN, TX"/>
 <!--            <TextView-->
 <!--                android:id="@+id/updated_at"-->
@@ -50,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Clear Sky"
-                android:textColor="@color/white"
+                android:fontFamily="@font/raphtalia"
+                android:textColor="@color/weatherText"
                 android:textSize="18dp" />
 
             <TextView
@@ -60,13 +62,14 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/raphtalia"
                 android:text="69°F"
-                android:textColor="@color/white"
+                android:textColor="@color/weatherText"
                 android:textSize="90dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+
                 android:orientation="horizontal">
 
                 <TextView
@@ -74,7 +77,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Minimum: 69°F"
-                    android:textColor="@color/white" />
+                    android:textSize="20dp"
+                    android:fontFamily="@font/raphtalia"
+                    android:textColor="@color/weatherText" />
 
                 <Space
                     android:layout_width="50dp"
@@ -84,8 +89,10 @@
                     android:id="@+id/temp_max"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/raphtalia"
+                    android:textSize="20dp"
                     android:text="Maximum: 69°F"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/weatherText" />
             </LinearLayout>
 
 <!--        </LinearLayout>-->
