@@ -1,9 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    repositories {
+        mavenCentral()
+    }
     ext {
         lifecycle_version = '2.3.1'
-        room_version = '2.3.0'
     }
 }
 

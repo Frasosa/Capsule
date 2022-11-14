@@ -4,13 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/home_gradient.xml" value="0.226" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_checkroom_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_cloud_queue_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2115" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/font/font_resource.xml" value="0.2791666666666667" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_outfit.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_picker.xml" value="0.25" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_recycler_item.xml" value="0.25" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_wardrobe.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_wardrobe_item.xml" value="0.1766304347826087" />
         <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/layout/fragment_weather.xml" value="0.264" />
+        <entry key="..\:/Users/baseb/AndroidStudioProjects/Final-Project/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

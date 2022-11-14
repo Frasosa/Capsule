@@ -1,16 +1,22 @@
 package com.sosa.final_project.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.adapters.OutfitAdapter
+import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
+import com.sosa.final_project.model.OutfitViewModelFactory
+import okhttp3.internal.wait
 
 /**
  * A reusable fragment
@@ -18,13 +24,19 @@ import com.sosa.final_project.model.OutfitViewModel
  * in a recycler view format.
  */
 class OutfitFragment : Fragment() {
+    // init binding
     private var _binding: FragmentOutfitBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: OutfitViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    // gets view model
+    private val outfitViewModel: OutfitViewModel by activityViewModels{
+        OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
+
+    // TODO: init adapter with onclick
+    private val adapter by lazy {OutfitAdapter{ item ->
+        outfitViewModel.updateOutfitRemoval(item)
+    }}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,22 +44,34 @@ class OutfitFragment : Fragment() {
     ): View? {
         //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
-        val root = binding.root
 
+        (activity as AppCompatActivity?)!!.supportActionBar?.title = "" + outfitViewModel.currentDay.capitalize() + "'s Outfit"
 
+        // sets onclick for button to delete the outfit
+        binding.deleteFab.setOnClickListener {
+            outfitViewModel.deleteOutfit()
+        }
 
-        //TODO: ADD FUNCTIONALITY TO EDITING THE OUTFIT
-//        binding.fab.setOnClickListener {
-//            sharedViewModel.entireWardrobe()
-//            findNavController().navigate(R.id.action_outfitFragment_to_wardrobeFragment)
-//        }
+        // sets onclick for button to navigate to picker
+        binding.pickItemsFab.setOnClickListener {
+            findNavController().navigate(R.id.action_outfitFragment_to_pickerFragment)
+        }
 
-        //Initialize recyclerview
+        // observe the data for recycler view
+        outfitViewModel.currentOutfit.observe(viewLifecycleOwner) {
+            if (outfitViewModel.currentOutfit.value != null) {
+                adapter.setData(outfitViewModel.currentOutfit.value!!)
+            } else {
+                adapter.setData(Outfit(outfitViewModel.currentDay, mutableListOf()))
+            }
+        }
+
+        // initialize recyclerview
         val recyclerView = binding.outfitRecyclerView
-        recyclerView.adapter = OutfitAdapter(sharedViewModel)
+        recyclerView.adapter = adapter
 
         // Inflate the layout for this fragment
-        return root
+        return binding.root
     }
 
 }

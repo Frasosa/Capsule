@@ -3,40 +3,52 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".ui.OutfitFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PickerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/outfit_recycler_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/wardrobe_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="1"/>
+        />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/pick_items_fab"
+    <TextView
+        android:id="@+id/hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="Add item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_baseline_add_24" />
+        android:visibility="invisible"
+        android:textSize="24dp"
+        android:text="Add items to your wardrobe first!"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_fab"
+        android:id="@+id/confirm_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="Delete item"
-        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/pick_items_fab" />
+        android:src="@drawable/ic_baseline_check_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cancel_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toStartOf="@id/confirm_fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_backspace_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

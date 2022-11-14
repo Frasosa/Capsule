@@ -10,18 +10,25 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.databinding.FragmentHomeBinding
-import com.sosa.final_project.model.OutfitViewModel
+import com.sosa.final_project.model.*
+
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class HomeFragment : Fragment() {
+    // init binding
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val sharedViewModel: OutfitViewModel by activityViewModels()
+
+    // get view model
+    private val outfitViewModel: OutfitViewModel by activityViewModels{
+        OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +38,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        //set onclick listeners
+        //set onclick listeners for each button
         binding.sundayButton.setOnClickListener{
             goToOutfitOfTheDay("sunday")
         }
@@ -64,7 +71,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToOutfitOfTheDay(day: String) {
-        sharedViewModel.setOutfit(day)
+        outfitViewModel.setOutfit(day)
         findNavController().navigate(R.id.action_homeFragment_to_outfitFragment)
     }
 

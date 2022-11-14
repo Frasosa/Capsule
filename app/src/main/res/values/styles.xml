@@ -1,12 +1,3 @@
 <resources>
 
-    <style name="Widget.Theme.Final_Project.ButtonBar.Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#122259</item>
-        <item name="colorPrimaryDark">#122259</item>
-        <item name="colorAccent">#FF03DAC5</item>
-        <item name="android:textColor">#FFF</item>
-
-<!--        <item name="android:background">@color/black_overlay</item>-->
-<!--        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>-->
-    </style>
 </resources>

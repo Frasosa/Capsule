@@ -35,6 +35,27 @@
         android:id="@+id/outfitFragment"
         android:name="com.sosa.final_project.ui.OutfitFragment"
         android:label="Outfit"
-        tools:layout="@layout/fragment_outfit" />
+        tools:layout="@layout/fragment_outfit" >
+        <action
+            android:id="@+id/action_outfitFragment_to_pickerFragment"
+            app:destination="@id/pickerFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/pickerFragment"
+        android:name="com.sosa.final_project.ui.PickerFragment"
+        android:label="Pick items to add to outfit"
+        tools:layout="@layout/fragment_picker" >
+        <action
+            android:id="@+id/action_pickerFragment_to_outfitFragment"
+            app:destination="@id/outfitFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/from_right" />
+    </fragment>
 
 </navigation>
