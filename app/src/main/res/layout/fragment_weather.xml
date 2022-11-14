@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/home_gradient">
 
     <RelativeLayout
         android:id="@+id/mainContainer"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="sans-serif-thin"
+                android:fontFamily="@font/raphtalia"
                 android:text="69°F"
                 android:textColor="@color/white"
                 android:textSize="90dp" />
