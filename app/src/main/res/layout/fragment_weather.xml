@@ -88,193 +88,193 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
-        <LinearLayout
-            android:id="@+id/detailsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/detailsContainer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:orientation="vertical">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="3">-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Monday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Monday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day1_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day1_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
+<!--                <Space-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="wrap_content" />-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tuesday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tuesday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day2_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day2_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
+<!--                <Space-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="wrap_content" />-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wednesday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day3"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Wednesday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day3_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
-            </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day3_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+<!--            <Space-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="10dp" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="3">-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Thursday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day4"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Thursday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day4_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day4_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
+<!--                <Space-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="wrap_content" />-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Friday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day5"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Friday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day5_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day5_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
+<!--                <Space-->
+<!--                    android:layout_width="10dp"-->
+<!--                    android:layout_height="wrap_content" />-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3CF1EBF1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="#3CF1EBF1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="8dp">-->
 
-                    <TextView
-                        android:id="@+id/day6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Saturday"
-                        android:textSize="12dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/day6"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Saturday"-->
+<!--                        android:textSize="12dp" />-->
 
-                    <TextView
-                        android:id="@+id/day6_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="69°F"
-                        android:textSize="14dp" />
-                </LinearLayout>
-            </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/day6_temp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="69°F"-->
+<!--                        android:textSize="14dp" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 
