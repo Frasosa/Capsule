@@ -117,7 +117,7 @@ class WeatherFragment : Fragment() {
 
                 // Populating extracted data into our views
                 binding.address.text = fullAddress
-                binding.updatedAt.text = updatedAt0Text
+                //binding.updatedAt.text = updatedAt0Text
                 binding.status.text = weatherDescription0.capitalize()
                 binding.temp.text = temp0
                 binding.tempMin.text = tempMin
