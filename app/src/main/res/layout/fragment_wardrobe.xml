@@ -28,10 +28,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:fontFamily="@font/raphtalia"
+        android:fontFamily="@font/architects_daughter"
         android:visibility="invisible"
-        android:textSize="24dp"
-        android:text="Add items to your wardrobe!"
+        android:textSize="24sp"
+        android:text="@string/add_items_to_your_wardrobe"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,24 +39,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:tint="@color/white"
         android:clickable="false"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/camera_fab"
-        android:src="@drawable/ic_baseline_image_search_24" />
+        android:src="@drawable/ic_baseline_image_search_24"
+        android:contentDescription="@string/add_from_gallery" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/camera_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:tint="@android:color/white"
         android:clickable="false"
         android:visibility="gone"
         android:src="@drawable/ic_baseline_camera_alt_24"
         app:layout_constraintBottom_toTopOf="@id/add_fab"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_from_camera" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
@@ -66,7 +66,8 @@
         android:backgroundTint="@color/sec_green_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_baseline_add_24" />
+        android:src="@drawable/ic_baseline_add_24"
+        android:contentDescription="@string/add_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/trash_fab"
@@ -76,5 +77,6 @@
         android:backgroundTint="@color/sec_green_dark"
         app:layout_constraintEnd_toStartOf="@id/add_fab"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_baseline_delete_24" />
+        android:src="@drawable/ic_baseline_delete_24"
+        android:contentDescription="@string/delete_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

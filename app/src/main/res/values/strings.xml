@@ -18,4 +18,16 @@
     <string name="_65">65</string>
     <string name="weekly_weather_forecast">Weekly Weather Forecast</string>
     <string name="_77">77</string>
+    <string name="capsule">Capsule</string>
+    <string name="wardrobe">Wardrobe</string>
+    <string name="add_item">Add item</string>
+    <string name="delete_item">Delete item</string>
+    <string name="add_items_to_your_wardrobe_first">Add items to your wardrobe first!</string>
+    <string name="confirm_additions">Confirm additions</string>
+    <string name="cancel">Cancel</string>
+    <string name="image_of_item">Image of item</string>
+    <string name="add_items_to_your_wardrobe">Add items to your wardrobe!</string>
+    <string name="add_from_gallery">add from gallery</string>
+    <string name="add_from_camera">add from camera</string>
+    <string name="error_text">Oops! Something went wrong, make sure you are connected to the internet!</string>
 </resources>

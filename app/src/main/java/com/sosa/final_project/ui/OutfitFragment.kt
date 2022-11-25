@@ -1,6 +1,5 @@
 package com.sosa.final_project.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,7 @@ import com.sosa.final_project.data.Outfit
 import com.sosa.final_project.databinding.FragmentOutfitBinding
 import com.sosa.final_project.model.OutfitViewModel
 import com.sosa.final_project.model.OutfitViewModelFactory
-import okhttp3.internal.wait
+import java.util.*
 
 /**
  * A reusable fragment
@@ -41,11 +40,15 @@ class OutfitFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
 
-        (activity as AppCompatActivity?)!!.supportActionBar?.title = "" + outfitViewModel.currentDay.capitalize() + "'s Outfit"
+        (activity as AppCompatActivity?)!!.supportActionBar?.title = "" + outfitViewModel.currentDay.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(
+                Locale.getDefault()
+            ) else it.toString()
+        } + "'s Outfit"
 
         // sets onclick for button to delete the outfit
         binding.deleteFab.setOnClickListener {

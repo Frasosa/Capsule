@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment"
     android:background="@drawable/home_gradient"
-    >
-
+    tools:context=".ui.HomeFragment">
 
     <TextView
         android:id="@+id/title_text"
-        android:layout_width="275dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:fontFamily="@font/raphtalia"
-        android:text="Capsule"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/capsule"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
         android:textColor="@color/titleHome"
-        android:textSize="70dp"
+        android:textSize="70sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/sunday_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,14 +25,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="275dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/raphtalia"
-        android:text="Wardrobe"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/wardrobe"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
         android:textColor="@color/titleHome"
-        android:textSize="70dp"
+        android:textSize="70sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sunday_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,106 +44,99 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/sunday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/monday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_text"
-        android:text="Sunday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/title_text" />
 
     <Button
         android:id="@+id/monday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/monday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/tuesday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sunday_button"
-        android:text="Monday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/sunday_button" />
 
     <Button
         android:id="@+id/tuesday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/tuesday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/wednesday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/monday_button"
-        android:text="Tuesday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/monday_button" />
 
     <Button
         android:id="@+id/wednesday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/wednesday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/thursday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tuesday_button"
-        android:text="Wednesday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tuesday_button" />
 
     <Button
         android:id="@+id/thursday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/thursday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/friday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wednesday_button"
-        android:text="Thursday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/wednesday_button" />
 
     <Button
         android:id="@+id/friday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/friday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/saturday_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thursday_button"
-        android:text="Friday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/thursday_button" />
 
     <Button
         android:id="@+id/saturday_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/buttonBackTint"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/saturday"
+        android:textColor="@color/buttonTextTint"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/friday_button"
-        android:text="Saturday"
-        android:textSize="20dp"
-        android:fontFamily="@font/raphtalia"
-        android:backgroundTint="@color/buttonBackTint"
-        android:textColor="@color/buttonTextTint"
-        />
+        app:layout_constraintTop_toBottomOf="@id/friday_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

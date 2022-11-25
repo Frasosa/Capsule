@@ -28,10 +28,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:fontFamily="@font/raphtalia"
+        android:fontFamily="@font/architects_daughter"
         android:visibility="invisible"
-        android:textSize="24dp"
-        android:text="Add items to your wardrobe first!"
+        android:textSize="24sp"
+        android:text="@string/add_items_to_your_wardrobe_first"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,17 +39,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/sec_green_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_baseline_check_24" />
+        android:src="@drawable/ic_baseline_check_24"
+        android:contentDescription="@string/confirm_additions" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cancel_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/sec_green_dark"
         app:layout_constraintEnd_toStartOf="@id/confirm_fab"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_baseline_backspace_24" />
+        android:src="@drawable/ic_baseline_backspace_24"
+        android:contentDescription="@string/cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
