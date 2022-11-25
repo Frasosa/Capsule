@@ -32,10 +32,14 @@ class OutfitFragment : Fragment() {
         OutfitViewModelFactory((activity?.application as BaseApplication).database.outfitDao())
     }
 
-    // TODO: init adapter with onclick
-    private val adapter by lazy {OutfitAdapter{ item ->
-        outfitViewModel.updateOutfitRemoval(item)
-    }}
+    // init adapter with onclick
+    private val adapter by lazy { OutfitAdapter{ item, selected ->
+        if (!selected)
+            outfitViewModel.selectItem(item)
+        else
+            outfitViewModel.deselectItem(item)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +47,9 @@ class OutfitFragment : Fragment() {
     ): View {
         //get binding
         _binding = FragmentOutfitBinding.inflate(inflater, container, false)
+
+        outfitViewModel.deselectAll()
+        adapter.resetBackgrounds(binding, adapter.itemCount)
 
         (activity as AppCompatActivity?)!!.supportActionBar?.title = "" + outfitViewModel.currentDay.replaceFirstChar {
             if (it.isLowerCase()) it.titlecase(
@@ -52,11 +59,13 @@ class OutfitFragment : Fragment() {
 
         // sets onclick for button to delete the outfit
         binding.deleteFab.setOnClickListener {
-            outfitViewModel.deleteOutfit()
+            outfitViewModel.removeItems()
+            adapter.resetBackgrounds(binding, adapter.itemCount)
         }
 
         // sets onclick for button to navigate to picker
         binding.pickItemsFab.setOnClickListener {
+            outfitViewModel.deselectAll()
             findNavController().navigate(R.id.action_outfitFragment_to_pickerFragment)
         }
 

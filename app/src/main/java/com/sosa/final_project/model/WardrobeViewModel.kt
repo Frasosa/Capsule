@@ -3,7 +3,6 @@ package com.sosa.final_project.model
 import androidx.lifecycle.*
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.data.ItemDao
-import com.sosa.final_project.data.converters.OutfitConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -41,7 +40,7 @@ class WardrobeViewModel(private val itemDao: ItemDao) : ViewModel() {
     }
 
     // removes an item from the database
-    fun removeItem (item: Item) = viewModelScope.launch(Dispatchers.IO) {
+    private fun removeItem (item: Item) = viewModelScope.launch(Dispatchers.IO) {
         itemDao.deleteItem(item)
     }
 

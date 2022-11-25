@@ -69,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/architects_daughter"
+                    android:textStyle="bold"
                     tools:text="69°F"
                     android:textColor="@color/weatherText"
                     android:textSize="90sp" />

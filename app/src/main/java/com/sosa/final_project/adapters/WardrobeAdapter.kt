@@ -12,7 +12,6 @@ import coil.load
 import com.sosa.final_project.data.Item
 import com.sosa.final_project.databinding.FragmentRecyclerItemBinding
 import com.sosa.final_project.databinding.FragmentWardrobeBinding
-import com.sosa.final_project.model.WardrobeViewModel
 
 
 class WardrobeAdapter (private val clickListener: (Item, Boolean) -> Unit):
@@ -69,13 +68,6 @@ class WardrobeAdapter (private val clickListener: (Item, Boolean) -> Unit):
             // invert value of selected for next click
             holder.selected = !holder.selected
         }
-
-//        holder.itemView.setOnLongClickListener {
-//            longClickListener(item)
-//            notifyItemRemoved(position)
-//            true
-//        }
-
     }
 
 

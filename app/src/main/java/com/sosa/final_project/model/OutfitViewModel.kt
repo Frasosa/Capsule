@@ -39,6 +39,29 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
         selectedItems.clear()
     }
 
+    fun selectItem(item: String) {
+        selectedItems.add(item)
+    }
+
+    fun deselectItem(item: String) {
+        selectedItems.remove(item)
+    }
+
+    fun removeItems() {
+        // copy over selected list
+        val tmpList = mutableListOf<String>()
+        tmpList.addAll(selectedItems)
+
+        // if the outfit is not already empty, remove selected items and update it
+        if (currentOutfit.value != null) {
+            viewModelScope.launch(Dispatchers.IO) {
+                currentOutfit.value?.items?.removeAll(tmpList)
+                outfitDao.updateOutfit(currentOutfit.value!!)
+            }
+            deselectAll()
+        }
+    }
+
     fun updateOutfit() {
         // copy over selected list
         val tmpList = mutableListOf<String>()
@@ -56,23 +79,6 @@ class OutfitViewModel(private val outfitDao: OutfitDao) : ViewModel() {
         }
         // clear selected list for next add
         selectedItems.clear()
-    }
-
-    // will update the outfit to remove the item passed
-    fun updateOutfitRemoval(item: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            currentOutfit.value?.items?.remove(item)
-            outfitDao.updateOutfit(currentOutfit.value!!)
-        }
-}
-
-    // clears the entire outfit for a day
-    fun deleteOutfit() {
-        if (currentOutfit.value != null) {
-            viewModelScope.launch(Dispatchers.IO) {
-                outfitDao.updateOutfit(Outfit(currentDay, mutableListOf()))
-            }
-        }
     }
 
     // sets the current outfit to the day chosen
