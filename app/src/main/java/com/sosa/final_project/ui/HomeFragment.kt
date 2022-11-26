@@ -1,24 +1,19 @@
 package com.sosa.final_project.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.sosa.final_project.BaseApplication
 import com.sosa.final_project.R
 import com.sosa.final_project.databinding.FragmentHomeBinding
 import com.sosa.final_project.model.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment to display the home screen which allows the user to pick a day of the week
  */
 class HomeFragment : Fragment() {
     // init binding
@@ -33,7 +28,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root = binding.root

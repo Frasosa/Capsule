@@ -1,13 +1,13 @@
 package com.sosa.final_project
 
-import android.app.Fragment
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.sosa.final_project.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         // retrieve NavController from the NavHostFragment
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // override home click to go back to home fragment, without impacting bottom nav bar setup
+        @Suppress("DEPRECATION")
         binding.bottomNavigationMenu.setOnNavigationItemSelectedListener {
             if (NavigationUI.onNavDestinationSelected(it, navController)) {
                 true
