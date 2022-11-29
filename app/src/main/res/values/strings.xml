@@ -30,4 +30,6 @@
     <string name="add_from_gallery">add from gallery</string>
     <string name="add_from_camera">add from camera</string>
     <string name="error_text">Oops! Something went wrong, make sure you are connected to the internet!</string>
+    <string name="displays_all_items_in_your_wardrobe">displays all items in your wardrobe</string>
+    <string name="displays_the_outfit_chosen">displays the outfit chosen</string>
 </resources>
