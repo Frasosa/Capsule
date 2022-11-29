@@ -33,7 +33,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:textColor="@color/titleHome"
-            android:textSize="70sp"
+            android:textSize="65sp"
             android:textStyle="bold"
             android:paddingTop="80dp"
             app:layout_constraintBottom_toTopOf="@+id/sunday_button"
